@@ -3,109 +3,449 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ဝေါဟာရဒီပနီ - Wawharadipani</title>
+    <title>Wawhara Dipan (ဝေါဟာရဒီပံ) - Myanmar English Dictionary for Desktop</title>
     <style>
-        /* Modern & Clean Minimalist Style (Kotatogram Inspired) */
+        :root {
+            --primary-color: #161b22;
+            --accent-color: #58a6ff;
+            --bg-gradient: linear-gradient(135deg, #1f1f2e 0%, #111118 100%);
+            --text-main: #f0f6fc;
+            --text-muted: #8b949e;
+            --card-bg: #161b22;
+            --border-color: #21262d;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f8f9fa;
-            color: #333;
-            text-align: center;
+            background-color: #0d1117;
+            color: var(--text-main);
+            line-height: 1.8;
         }
-        header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 80px 20px;
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 10%;
+            background-color: var(--primary-color);
+            border-bottom: 1px solid var(--border-color);
         }
-        header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-        }
-        header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 15px auto 0 auto;
-            line-height: 1.6;
-        }
-        .container {
-            max-width: 800px;
-            margin: 50px auto;
-            padding: 0 20px;
-        }
-        .btn-download {
-            display: inline-block;
-            background-color: #007bff;
-            color: white;
-            padding: 15px 30px;
-            font-size: 1.1rem;
+
+        nav .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
             text-decoration: none;
-            border-radius: 5px;
+            color: var(--text-main);
             font-weight: bold;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: background 0.3s;
+            font-size: 1.25rem;
         }
-        .btn-download:hover {
-            background-color: #0056b3;
-        }
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 50px;
-        }
-        .feature-box {
-            background: white;
-            padding: 25px;
+
+        nav .logo-area img {
+            width: 40px;
+            height: 40px;
             border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            text-align: left;
+            object-fit: cover;
+            border: 1px solid #30363d;
         }
-        .feature-box h3 {
-            margin-top: 0;
-            color: #764ba2;
+
+        nav .links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 0.95rem;
+            transition: color 0.2s;
         }
-        footer {
-            margin-top: 100px;
+
+        nav .links a:hover {
+            color: var(--accent-color);
+        }
+
+        .hero {
+            background: var(--bg-gradient);
+            padding: 30px 10% 60px 10%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hero-content {
+            flex: 1.2;
+            max-width: 650px;
+        }
+
+        .hero-content h1 {
+            font-size: 2.3rem;
+            margin: 0 0 10px 0;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .version-badge {
+            display: inline-block;
+            background-color: #21262d;
+            color: var(--accent-color);
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid #30363d;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: 1.05rem;
+            color: #c9d1d9;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .hero-content p.en-text {
+            color: #8b949e;
+            font-size: 0.95rem;
+            border-left: 3px solid #30363d;
+            padding-left: 12px;
+            margin-bottom: 30px;
+        }
+
+        .download-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .btn-primary {
+            background-color: #238636;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #2ea043;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: #21262d;
+            color: #c9d1d9;
+            border: 1px solid #30363d;
+        }
+
+        .btn-secondary:hover {
+            background-color: #30363d;
+            transform: translateY(-2px);
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .preview-container {
+            width: 100%;
+            max-width: 500px;
+            background-color: #1c2128;
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            padding: 8px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            box-sizing: border-box;
+            transition: transform 0.3s;
+        }
+
+        .preview-container:hover {
+            transform: scale(1.02);
+        }
+
+        .preview-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            display: block;
+        }
+
+        .main-content {
+            padding: 60px 10%;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .info-section {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
             padding: 30px;
-            background: #222;
-            color: #888;
+            margin-bottom: 40px;
+        }
+
+        .info-section h2 {
+            margin-top: 0;
+            color: var(--accent-color);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+            font-size: 1.5rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .feature-card {
+            background-color: #0d1117;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 20px;
+        }
+
+        .feature-card h3 {
+            margin-top: 0;
+            color: #ffffff;
+            font-size: 1.15rem;
+        }
+
+        .feature-card p.card-en {
+            color: var(--text-muted);
             font-size: 0.9rem;
+            border-top: 1px solid #21262d;
+            padding-top: 8px;
+            margin-top: 8px;
+            margin-bottom: 0;
+        }
+
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        .info-table td {
+            padding: 10px 15px;
+            border-bottom: 1px solid #21262d;
+            font-size: 1rem;
+        }
+
+        .info-table td:first-child {
+            font-weight: bold;
+            color: var(--text-muted);
+            width: 35%;
+        }
+
+        .history-item {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #21262d;
+        }
+        .history-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .history-item h3 {
+            margin: 0 0 10px 0;
+            color: #ffffff;
+            font-size: 1.15rem;
+        }
+        .history-item ul {
+            margin: 0;
+            padding-left: 20px;
+            color: #c9d1d9;
+        }
+
+        .dev-info p {
+            margin: 8px 0;
+        }
+
+        .note-box {
+            background-color: #1f1f2e;
+            border-left: 4px solid var(--accent-color);
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 15px;
+            font-size: 0.95rem;
+        }
+
+        footer {
+            background-color: #0d1117;
+            padding: 40px 10%;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 992px) {
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding: 40px 5%;
+            }
+            .hero-content p {
+                text-align: center;
+            }
+            .hero-content p.en-text {
+                border-left: none;
+                padding-left: 0;
+                text-align: center;
+            }
+            .download-buttons {
+                justify-content: center;
+            }
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>ဝေါဟာရဒီပနီ (Wawharadipani)</h1>
-        <p>ဤဆော့ဖ်ဝဲလ်ကို လေ့လာသင်ယူသူ အားလုံးအတွက် အခမဲ့ ရရှိစေရန် ရည်ရွယ်၍ ဖန်တီးပေးထားခြင်းဖြစ်ပါသည်။ သင်ယူမှုအတွက် အထောက်အကူဖြစ်စေရန် ဆုတောင်းမိပါသည်။</p>
-        <br><br>
-        <a href="https://archive.org/details/wawhara-dipan" class="btn-download">Download Latest Version</a>
-    </header>
+    <nav>
+        <a href="#" class="logo-area">
+            <img src="app_logo.png" alt="Wawhara Dipan Logo" onerror="this.style.display='none'">
+            <span>Wawhara Dipan</span>
+        </a>
+        <div class="links">
+            <a href="https://wawharadipan.github.io/">Home</a>
+            <a href="https://archive.org/details/wawhara-dipan" target="_blank">Archive Resource</a>
+        </div>
+    </nav>
 
-    <div class="container">
-        <h2>အဓိက လုပ်ဆောင်ချက်များ (Features)</h2>
-        
-        <div class="features">
-            <div class="feature-box">
-                <h3>🔍 မြန်ဆန်သော ရှာဖွေမှု</h3>
-                <p>ဝေါဟာရများကို အချိန်ကြန့်ကြာမှုမရှိဘဲ လွယ်ကူလျင်မြန်စွာ ရှာဖွေဖတ်ရှုနိုင်ပါသည်။</p>
+    <div class="hero">
+        <div class="hero-content">
+            <h1>ဝေါဟာရဒီပံ ( Wawhara Dipan )</h1>
+            <div class="version-badge">Desktop Version v1.0.1</div>
+            
+            <p>ဝေါဟာရဒီပံ (Wawhara Dipan) သည် လေ့လာသင်ယူသူများနှင့် အများပြည်သူ ဗဟုသုတတိုးတက်ရေးအတွက် ရည်ရွယ်၍ အခမဲ့ ဖြန့်ချိသော Windows Desktop သုံး Myanmar-English / English-Myanmar Dictionary ဆော့ဖ်ဝဲလ် ဖြစ်ပါသည်။</p>
+            <p class="en-text">Wawhara Dipan is a free offline Myanmar-English and English-Myanmar Dictionary application designed for Windows Desktop. It aims to assist students, language learners, and the general public in enhancing their vocabulary and language skills.</p>
+            
+            <div class="download-buttons">
+                <a href="https://github.com/wawharadipan/wawharadipan.github.io/releases/download/v1.0.1/WawharaDipan_Setup_v1.0.1.zip" class="btn btn-primary" target="_blank">📥 Direct Download v1.0.1 (.zip)</a>
+                <a href="https://archive.org/details/wawhara-dipan" class="btn btn-secondary" target="_blank">🌐 View Source Archive</a>
             </div>
-            <div class="feature-box">
-                <h3>📖 ပြည့်စုံသော အချက်အလက်</h3>
-                <p>လေ့လာသူများအတွက် အထောက်အကူဖြစ်စေမည့် အဓိပ္ပာယ်ဖွင့်ဆိုချက်များကို စနစ်တကျ ထည့်သွင်းထားပါသည်။</p>
-            </div>
-            <div class="feature-box">
-                <h3>💡 အခမဲ့ အသုံးပြုနိုင်ခြင်း</h3>
-                <p>မည်သည့် ကန့်သတ်ချက်မှမရှိဘဲ လုံးဝ အခမဲ့ (Open Source) ရယူ အသုံးပြုနိုင်ပါသည်။</p>
+        </div>
+        <div class="hero-image">
+            <div class="preview-container">
+                <img src="WAWHARA_DIPEN_SCREEN_SHOT.png" alt="Wawhara Dipan Desktop Preview" onerror="this.src='https://via.placeholder.com/500x300/1c2128/8b949e?text=Desktop+App+Preview'">
             </div>
         </div>
     </div>
 
+    <div class="main-content">
+        
+        <div class="info-section">
+            <h2>✨ အဓိက ပါဝင်သော စနစ်များ (Key Features)</h2>
+            <div class="features-grid">
+                
+                <div class="feature-card">
+                    <h3>🔍 (၁) နှစ်ဘာသာ ရှာဖွေနိုင်ခြင်း</h3>
+                    <p style="margin: 0;">English ➔ Myanmar ရော Myanmar ➔ English ပါ အလွယ်တကူ ရှာဖွေနိုင်ခြင်း။</p>
+                    <p class="card-en">Bi-directional Search - Search words effortlessly from English to Myanmar or Myanmar to English.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>🔊 (၂) အသံထွက်စနစ် (Audio)</h3>
+                    <p style="margin: 0;">အင်္ဂလိပ်စာလုံးများ၏ အသံထွက်ကို ခလုတ်နှိပ်၍ မှန်ကန်စွာ နားထောင်နိုင်ခြင်း။</p>
+                    <p class="card-en">Audio Pronunciation - Built-in text-to-speech feature to listen to correct English pronunciations.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>⭐ (၃) မှတ်သားရန်စနစ် (Favorite)</h3>
+                    <p style="margin: 0;">မိမိအလွတ်ကျက်ချင်သော သို့မဟုတ် ခဏခဏကြည့်လိုသော စာလုံးများကို ကြယ်ပွင့်နှိပ်၍ သီးသန့် သိမ်းဆည်းထားနိုင်ခြင်း။</p>
+                    <p class="card-en">Bookmark System - Save and organize difficult or important words for future review.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>📋 (၄) ကူးယူခြင်းစနစ် (Copy Text)</h3>
+                    <p style="margin: 0;">စာလုံးနှင့် အဓိပ္ပာယ်ရှင်းလင်းချက်များကို clipboard ထဲသို့ တစ်ချက်နှိပ်ရုံဖြင့် အလွယ်တကူ Copy ကူးယူနိုင်ခြင်း။</p>
+                    <p class="card-en">Easy Copy Text - Quickly copy definitions and meanings to your clipboard for note-taking.</p>
+                </div>
+                
+            </div>
+        </div>
+
+        <div class="info-section">
+            <h2>🖥️ ဆော့ဖ်ဝဲလ်ဆိုင်ရာ အချက်အလက်များ (Specifications)</h2>
+            <table class="info-table">
+                <tr><td>ဆော့ဖ်ဝဲလ်အမည် (Name)</td><td>Wawhara Dipan (ဝေါဟာရဒီပံ)</td></tr>
+                <tr><td>ဆော့ဖ်ဝဲလ်အမျိုးအစား (Type)</td><td>Desktop Dictionary Software</td></tr>
+                <tr><td>စနစ်လိုအပ်ချက် (Platform)</td><td>Windows 10 / 11 (64-bit)</td></tr>
+                <tr><td>ဖိုင်အမျိုးအစား (Format)</td><td>Standalone Installer / Setup Executable</td></tr>
+                <tr><td>လက်ရှိဗားရှင်း (Version)</td><td>1.0.1.2602 (Build 2602)</td></tr>
+                <tr><td>ဖြန့်ချိသည့်ခုနှစ် (Release Year)</td><td>2026</td></tr>
+                <tr><td>အသုံးပြုထားသည့် Framework</td><td>PySide6 (Qt)</td></tr>
+                <tr><td>ဒေတာဘေ့စ်စနစ် (Database)</td><td>Embedded SQLite (Auto-extract to AppData)</td></tr>
+                <tr><td>အသုံးပြုခွင့် မူဝါဒ (License)</td><td>Free & Open Resource (ပညာဒါန အခမဲ့)</td></tr>
+            </table>
+            
+            <div class="note-box">
+                <strong>💡 First Run Note / ထည့်သွင်းအသုံးပြုနည်း:</strong><br>
+                1. Download ရလာသော Zip ဖိုင်ကိုဖြည်၍ Installer ကို Run ပါ။ Setup Wizard အတိုင်း ထည့်သွင်းပါ။<br>
+                2. ပထမဆုံးအကြိမ်ဖွင့်လျှင် Database ဖိုင်များကို <code>%APPDATA%\WawharaDipan</code> ထဲသို့ အလိုအလျောက် Extracted ပြုလုပ်ပေးသွားမည် ဖြစ်ပါသည်။<br>
+                3. Favorites နှင့် စိတ်ကြိုက်မှတ်သားထားချက်များကို သီးသန့်သိမ်းဆည်းပေးထားသဖြင့် နောက်ပိုင်း ဆော့ဖ်ဝဲလ်ကို Uninstall ပြုလုပ်လျှင်လည်း ပျောက်ပျက်သွားမည်မဟုတ်ပါ။
+            </div>
+        </div>
+
+        <div class="info-section">
+            <h2>📜 ဗားရှင်းမှတ်တမ်း (Version History)</h2>
+            
+            <div class="history-item">
+                <h3>🚀 Version 1.0.1 (Build 2602) - 2026-03-15</h3>
+                <ul>
+                    <li>PySide6 (Qt) အဖြစ် အပြည့်အဝ ပြောင်းလဲခြင်း (Full migration from Tkinter to PySide6)</li>
+                    <li>UI Design ခေတ်မီအောင် ပြင်ဆင်ခြင်း (Modern UI design with improved colors)</li>
+                    <li>Font အရွယ်အစား မြှင့်တင်ခြင်းနှင့် Logo အလယ်နေရာချခြင်း (Larger font sizes & centered logo)</li>
+                    <li>Word List ကျဉ်းမြောင်းအောင် ပြုလုပ်ခြင်း (Narrower word list sidebar)</li>
+                </ul>
+            </div>
+
+            <div class="history-item">
+                <h3>🚀 Version 1.0.0 (Build 2401) - 2026-01-15</h3>
+                <ul>
+                    <li>ပထမဆုံး Tkinter Version ထွက်ရှိခြင်း (Initial release with Tkinter)</li>
+                    <li>Basic Dictionary Functions များ ရှာဖွေနိုင်ခြင်း</li>
+                    <li>Favorites System နှင့် Text-to-Speech Feature များ ပါဝင်ခြင်း</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="info-section dev-info">
+            <h2>👨‍🏫 ဖန်တီးသူ အချက်အလက် (Developer Information)</h2>
+            <p><strong>Developer:</strong> U Myo Kyaw Thu (Computer Instructor)</p>
+            <p><strong>Institution:</strong> CyberVerse Computer Training (North Okkalapa, Yangon, Myanmar)</p>
+            <p><strong>Contact / Phone:</strong> 09-799497334</p>
+            
+            <p style="margin-top: 20px; border-top: 1px solid #21262d; padding-top: 15px;">
+                <strong>⚖️ လိုင်စင်နှင့် စည်းကမ်းချက်များ (License):</strong><br>
+                ဆော့ဖ်ဝဲလ်ကို ပညာဒါနအဖြစ် အခမဲ့ လွတ်လပ်စွာ ရယူအသုံးပြုနိုင်ပါသည်။ သို့သော်လည်း စီးပွားဖြစ် ပြန်လည်ရောင်းချခြင်းကို လုံးဝ (လုံးဝ) တားမြစ်ပါသည်။ မူရင်းဖန်တီးသူ၏ ခွင့်ပြုချက်မရှိဘဲ ကုဒ်ကို ပြုပြင်မွမ်းမံခြင်း မပြုလုပ်ရန် မေတ္တာရပ်ခံအပ်ပါသည်။
+            </p>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px; color: var(--text-muted); font-style: italic;">
+            <p>“ ဤဆော့ဖ်ဝဲလ်ကို လေ့လာသင်ယူသူအားလုံးအတွက် အခမဲ့ ရရှိစေရန် ရည်ရွယ်၍ ဖန်တီးပေးထားခြင်းဖြစ်ပါသည်။ သင်ယူမှုအတွက် အထောက်အကူဖြစ်စေရန် ဆုတောင်းမိပါသည်။ ”</p>
+            <p style="font-size: 0.9rem;">“ This software is created with the intention of providing free access to all learners. May it support your educational journey. ”</p>
+        </div>
+
+    </div>
+
     <footer>
-        <p>&copy; 2026 Wawharadipani. All rights reserved.</p>
+        <p>© 2026 Myo Kyaw Thu & CyberVerse Computer Training. All Rights Reserved. Powered by GitHub Pages.</p>
     </footer>
 
 </body>
