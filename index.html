@@ -292,14 +292,29 @@
             font-size: 0.9rem;
         }
 
+         /* 📱 MOBILE & TABLET RESPONSIVE STYLES (ဖုန်းမျက်နှာပြင်အတွက် သီးသန့်ပြင်ဆင်ချက်) */
         @media (max-width: 992px) {
+            nav {
+                padding: 15px 5%;
+            }
             .hero {
-                flex-direction: column-reverse;
+                flex-direction: column-reverse; /* ဖုန်းပေါ်တွင် ပုံကိုအပေါ်တင်ပြီး စာကိုအောက်ချချင်လျှင် column-reverse သုံးပါ၊ စာကိုအပေါ်ထားချင်လျှင် column ဟုပြောင်းပါ */
                 text-align: center;
-                padding: 40px 5%;
+                padding: 30px 5% 40px 5%;
+                gap: 20px;
+            }
+            .hero-content {
+                max-width: 100%;
+            }
+            .hero-content h1 {
+                font-size: 1.8rem; /* ဖုန်းပေါ်တွင် ခေါင်းစဉ်စာလုံး အရွယ်အစားကို လျှော့ချပေးထားပါသည် */
+            }
+            .hero-content h1 span {
+                font-size: 1.4rem;
             }
             .hero-content p {
                 text-align: center;
+                font-size: 0.95rem;
             }
             .hero-content p.en-text {
                 border-left: none;
@@ -308,10 +323,45 @@
             }
             .download-buttons {
                 justify-content: center;
+                flex-direction: column; /* ဖုန်းပေါ်တွင် ဒေါင်းလုဒ်ခလုတ်များကို အပေါ်အောက် တန်းစီပေးပါသည် */
+                gap: 10px;
             }
+            .btn {
+                width: 100%; /* ခလုတ်များကို ဖုန်းမျက်နှာပြင်အပြည့် ဖြစ်စေပါသည် */
+                box-sizing: border-box;
+            }
+            .hero-image {
+                justify-content: center;
+                max-width: 100%;
+                width: 100%;
+            }
+            .preview-container {
+                max-width: 340px; /* ဖုန်းပေါ်တွင် App ပုံကြီး အဆမတန် ကြီးမနေအောင် ထိန်းပေးပါသည် */
+                margin: 0 auto;
+            }
+            .main-content {
+                padding: 30px 5%;
+            }
+            .info-section {
+                padding: 20px;
+            }
+        }
+
+        /* ဖုန်းအသေးစားများအတွက် ထပ်ဆင့်ညှိခြင်း */
+        @media (max-width: 480px) {
             nav {
                 flex-direction: column;
-                gap: 15px;
+                gap: 10px;
+                text-align: center;
+            }
+            nav .links {
+                margin-top: 5px;
+            }
+            nav .links a {
+                margin: 0 10px;
+            }
+            .hero-content h1 {
+                font-size: 1.6rem;
             }
         }
     </style>
