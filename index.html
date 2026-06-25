@@ -40,7 +40,6 @@
             overflow-x: hidden;
         }
 
-        /* ---- Animated Gradient Background ---- */
         .bg-animation {
             position: fixed;
             top: 0;
@@ -59,7 +58,6 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* ---- Glow Orbs ---- */
         .glow-orb {
             position: fixed;
             border-radius: 50%;
@@ -95,7 +93,6 @@
             opacity: 0.1;
         }
 
-        /* ---- Navbar ---- */
         nav {
             display: flex;
             justify-content: space-between;
@@ -160,40 +157,41 @@
             width: 100%;
         }
 
-        /* ---- Hero (Left-Right Layout) ---- */
+        /* ===== HERO ===== */
         .hero {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 40px 8% 60px 8%;
+            padding: 50px 8% 70px 8%;
             gap: 50px;
+            min-height: 80vh;
         }
 
         .hero-content {
             flex: 1.2;
-            max-width: 640px;
+            max-width: 660px;
         }
 
         .hero-badge {
             display: inline-block;
             background: rgba(109, 107, 252, 0.15);
             border: 1px solid rgba(109, 107, 252, 0.2);
-            padding: 6px 22px;
+            padding: 6px 24px;
             border-radius: 40px;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 600;
             color: #a8a4ff;
-            letter-spacing: 1.5px;
+            letter-spacing: 1.8px;
             text-transform: uppercase;
             margin-bottom: 18px;
             backdrop-filter: blur(4px);
         }
 
         .hero h1 {
-            font-size: 2.8rem;
+            font-size: 3.2rem;
             font-weight: 700;
-            line-height: 1.15;
-            margin-bottom: 6px;
+            line-height: 1.1;
+            margin-bottom: 4px;
             background: linear-gradient(135deg, #ffffff 30%, #a8a4ff 60%, #ff6b9d 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -202,7 +200,7 @@
 
         .hero h1 .sub-title {
             display: block;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             font-weight: 400;
             -webkit-text-fill-color: #8b95b0;
             color: #8b95b0;
@@ -214,12 +212,12 @@
             display: inline-block;
             background: rgba(255, 107, 157, 0.12);
             border: 1px solid rgba(255, 107, 157, 0.15);
-            padding: 4px 20px;
+            padding: 4px 22px;
             border-radius: 40px;
             font-size: 0.8rem;
             font-weight: 600;
             color: #ff6b9d;
-            margin: 10px 0 16px 0;
+            margin: 12px 0 18px 0;
         }
 
         .hero p {
@@ -235,15 +233,14 @@
             font-size: 0.95rem;
             border-left: 3px solid rgba(109, 107, 252, 0.2);
             padding-left: 16px;
-            margin-bottom: 28px;
+            margin-bottom: 30px;
         }
 
-        /* ---- FIXED: Download Buttons Row (works at 90% zoom) ---- */
         .download-buttons {
             display: flex;
             flex-direction: row;
-            flex-wrap: wrap;
-            gap: 12px;
+            flex-wrap: nowrap;
+            gap: 16px;
             align-items: center;
         }
 
@@ -251,15 +248,15 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 12px 24px;
-            font-size: 0.95rem;
+            padding: 15px 36px;
+            font-size: 1rem;
             font-weight: 600;
             text-decoration: none;
             border-radius: 50px;
             transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
             border: none;
             cursor: pointer;
-            letter-spacing: 0.2px;
+            letter-spacing: 0.3px;
             position: relative;
             overflow: hidden;
             white-space: nowrap;
@@ -306,7 +303,6 @@
             border-color: rgba(255, 255, 255, 0.12);
         }
 
-        /* ---- Hero Image ---- */
         .hero-image {
             flex: 1;
             display: flex;
@@ -315,7 +311,7 @@
 
         .preview-container {
             width: 100%;
-            max-width: 520px;
+            max-width: 540px;
             background: rgba(22, 27, 34, 0.4);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
@@ -339,7 +335,7 @@
             display: block;
         }
 
-        /* ---- Main Content ---- */
+        /* ===== MAIN CONTENT ===== */
         .main-content {
             max-width: 1100px;
             margin: 0 auto;
@@ -572,13 +568,46 @@
             margin-top: 10px;
         }
 
-        /* ---- Responsive ---- */
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1100px) {
+            .hero {
+                padding: 35px 5% 55px 5%;
+                gap: 35px;
+            }
+
+            .hero h1 {
+                font-size: 2.6rem;
+            }
+
+            .hero h1 .sub-title {
+                font-size: 1.2rem;
+            }
+
+            .hero p {
+                font-size: 0.95rem;
+            }
+
+            .hero p.en-text {
+                font-size: 0.85rem;
+            }
+
+            .btn {
+                padding: 13px 28px;
+                font-size: 0.9rem;
+            }
+
+            .preview-container {
+                max-width: 440px;
+            }
+        }
+
         @media (max-width: 992px) {
             .hero {
                 flex-direction: column-reverse;
                 text-align: center;
                 padding: 30px 5% 40px 5%;
                 gap: 30px;
+                min-height: auto;
             }
 
             .hero-content {
@@ -586,7 +615,7 @@
             }
 
             .hero h1 {
-                font-size: 2.2rem;
+                font-size: 2.4rem;
             }
 
             .hero h1 .sub-title {
@@ -605,6 +634,7 @@
 
             .download-buttons {
                 justify-content: center;
+                flex-wrap: wrap;
             }
 
             .preview-container {
@@ -628,7 +658,6 @@
             }
         }
 
-        /* ---- Mobile: buttons stack vertically ---- */
         @media (max-width: 600px) {
             .download-buttons {
                 flex-direction: column;
@@ -637,6 +666,14 @@
 
             .btn {
                 width: 100%;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero h1 .sub-title {
+                font-size: 1rem;
             }
         }
 
@@ -657,11 +694,11 @@
             }
 
             .hero h1 .sub-title {
-                font-size: 0.95rem;
+                font-size: 0.9rem;
             }
 
             .hero-badge {
-                font-size: 0.65rem;
+                font-size: 0.6rem;
                 padding: 4px 16px;
             }
 
@@ -695,13 +732,11 @@
 </head>
 <body>
 
-    <!-- Background Animation -->
     <div class="bg-animation"></div>
     <div class="glow-orb orb1"></div>
     <div class="glow-orb orb2"></div>
     <div class="glow-orb orb3"></div>
 
-    <!-- Navbar -->
     <nav>
         <a href="#" class="logo-area">
             <img src="app_logo.png" alt="Wawhara Dipan Logo" onerror="this.style.display='none'">
@@ -713,14 +748,16 @@
         </div>
     </nav>
 
-    <!-- Hero -->
+    <!-- ===== HERO ===== -->
     <div class="hero">
         <div class="hero-content">
             <div class="hero-badge">✦ Free Desktop Dictionary</div>
+
             <h1>
                 ဝေါဟာရဒီပံ
                 <span class="sub-title">Wawhara Dipan · English-Myanmar Dictionary</span>
             </h1>
+
             <div class="version-tag">⚡ Desktop Version v1.0.1</div>
 
             <p>ဝေါဟာရဒီပံ (Wawhara Dipan) သည် လေ့လာသင်ယူသူများနှင့် အများပြည်သူ ဗဟုသုတတိုးတက်ရေးအတွက် ရည်ရွယ်၍ အခမဲ့ ဖြန့်ချိသော Windows Desktop သုံး Myanmar-English / English-Myanmar Dictionary ဆော့ဖ်ဝဲလ် ဖြစ်ပါသည်။</p>
@@ -734,15 +771,14 @@
 
         <div class="hero-image">
             <div class="preview-container">
-                <img src="WAWHARA_DIPAN_SCREEN_SHOT1.png" alt="Wawhara Dipan Desktop Preview" onerror="this.src='https://via.placeholder.com/520x300/1c2128/8b949e?text=Desktop+App+Preview'">
+                <img src="WAWHARA_DIPAN_SCREEN_SHOT1.png" alt="Wawhara Dipan Desktop Preview" onerror="this.src='https://via.placeholder.com/540x320/1c2128/8b949e?text=Desktop+App+Preview'">
             </div>
         </div>
     </div>
 
-    <!-- Main Content -->
+    <!-- ===== MAIN CONTENT ===== -->
     <div class="main-content">
 
-        <!-- Features -->
         <div class="section-title">✨ <span>အဓိက ပါဝင်သော စနစ်များ</span> <span style="font-size:0.9rem;color:#5d6a7e;font-weight:400;background:none;-webkit-text-fill-color:#5d6a7e;">Key Features</span></div>
         <div class="features-grid">
 
@@ -776,7 +812,6 @@
 
         </div>
 
-        <!-- Specifications -->
         <div class="glass-card">
             <h2><span class="emoji">🖥️</span> ဆော့ဖ်ဝဲလ်ဆိုင်ရာ အချက်အလက်များ <span style="font-size:0.9rem;color:#5d6a7e;font-weight:400;">Specifications</span></h2>
             <table class="info-table">
@@ -798,7 +833,6 @@
             </div>
         </div>
 
-        <!-- Version History -->
         <div class="glass-card">
             <h2><span class="emoji">📜</span> ဗားရှင်းမှတ်တမ်း <span style="font-size:0.9rem;color:#5d6a7e;font-weight:400;">Version History</span></h2>
 
@@ -822,7 +856,6 @@
             </div>
         </div>
 
-        <!-- Developer -->
         <div class="glass-card dev-info">
             <h2><span class="emoji">👨‍🏫</span> ဖန်တီးသူ အချက်အလက် <span style="font-size:0.9rem;color:#5d6a7e;font-weight:400;">Developer Information</span></h2>
             <p><strong>Developer:</strong> U Myo Kyaw Thu (Computer Instructor)</p>
@@ -835,7 +868,6 @@
             </div>
         </div>
 
-        <!-- Quote -->
         <div class="footer-quote">
             <p>“ ဤဆော့ဖ်ဝဲလ်ကို လေ့လာသင်ယူသူအားလုံးအတွက် အခမဲ့ ရရှိစေရန် ရည်ရွယ်၍ ဖန်တီးပေးထားခြင်းဖြစ်ပါသည်။ သင်ယူမှုအတွက် အထောက်အကူဖြစ်စေရန် ဆုတောင်းမိပါသည်။ ”</p>
             <p class="en-quote">“ This software is created with the intention of providing free access to all learners. May it support your educational journey. ”</p>
@@ -843,7 +875,6 @@
 
     </div>
 
-    <!-- Footer -->
     <footer>
         <p>© 2026 Myo Kyaw Thu & CyberVerse Computer Training. All Rights Reserved. Powered by GitHub Pages.</p>
     </footer>
