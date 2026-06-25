@@ -238,12 +238,12 @@
             margin-bottom: 28px;
         }
 
-        /* ---- FIXED: Download Buttons Row ---- */
+        /* ---- FIXED: Download Buttons Row (works at 90% zoom) ---- */
         .download-buttons {
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
-            gap: 14px;
+            gap: 12px;
             align-items: center;
         }
 
@@ -251,20 +251,19 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 14px 32px;
-            font-size: 1rem;
+            padding: 12px 24px;
+            font-size: 0.95rem;
             font-weight: 600;
             text-decoration: none;
             border-radius: 50px;
             transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
             border: none;
             cursor: pointer;
-            letter-spacing: 0.3px;
+            letter-spacing: 0.2px;
             position: relative;
             overflow: hidden;
             white-space: nowrap;
-            min-width: 200px;
-            flex-shrink: 0;
+            flex: 0 0 auto;
         }
 
         .btn-primary {
@@ -606,13 +605,6 @@
 
             .download-buttons {
                 justify-content: center;
-                flex-direction: row;
-                flex-wrap: wrap;
-            }
-
-            .btn {
-                min-width: 180px;
-                flex-shrink: 0;
             }
 
             .preview-container {
@@ -645,8 +637,6 @@
 
             .btn {
                 width: 100%;
-                min-width: unset;
-                flex-shrink: 1;
             }
         }
 
