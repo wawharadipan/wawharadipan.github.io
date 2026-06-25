@@ -5,11 +5,9 @@
     <link rel="icon" type="image/png" href="app_logo.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- မူရင်း Title နေရာတွင် ဒါလေး အစားထိုးပါ -->
     <title>Wawhara Dipan (ဝေါဟာရဒီပံ) - Free English-Myanmar Dictionary for Desktop</title>
-
-    <!-- Meta Description နေရာတွင်လည်း Keyword ညှပ်ထည့်ပါ -->
     <meta name="description" content="Download Wawhara Dipan, a free offline English-Myanmar Dictionary and Myanmar-English Dictionary software for Windows Desktop.">
+    <meta name="keywords" content="English-Myanmar Dictionary, Myanmar-English Dictionary, Wawhara Dipan, ဝေါဟာရဒီပံ, Free Dictionary Download, Windows Dictionary, Offline Dictionary Myanmar">
 
     <!-- 🚀 Telegram & Social Media Link Preview (Open Graph Tags) -->
     <meta property="og:type" content="website">
@@ -21,10 +19,10 @@
     <!-- Twitter/X Preview -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Wawhara Dipan (ဝေါဟာရဒီပံ)">
-    <meta name="twitter:description" content="Windows Desktop သုံး Myanmar-English / English-Myanmar Dictionary အခမဲ့ဆော့ဖ်ဝဲလ်ကို ဤနေရာတွင် ဒေါင်းလုဒ်ရယူနိုင်ပါသည်။">
+    <meta name="twitter:description" content="Windows Desktop သုံး Myanmar-English / English-Myanmar Dictionary အခမဲ့ဆော့ဖ်ဝဲလ်">
     <meta name="twitter:image" content="https://wawharadipan.github.io/WAWHARA_DIPAN_SCREEN_SHOT1.png">
 
-    <style>
+<style>
         :root {
             --primary-color: #161b22;
             --accent-color: #58a6ff;
@@ -98,23 +96,47 @@
             max-width: 650px;
         }
 
+        /* 📦 (NEW) ခေါင်းစဉ်နှင့် Badge ကို ထိန်းချုပ်ပေးမည့် မူရင်း Container Styles */
+        .title-container {
+            position: relative;        
+            width: 100%;
+            text-align: center;
+            margin-bottom: 35px;       /* 👈 အောက်က စာပိုဒ်တွေနဲ့ အကွာအဝေး ပိုကျယ်ပေးထားပါတယ် */
+            padding-bottom: 35px;      /* 👈 Badge အတွက် အောက်ခြေမှာ ၃၅px နေရာလွတ် အတိအကျ ချန်ထားတာပါ */
+        }
+
+        /* 👑 မူရင်းခေါင်းစဉ်ကြီး (ဝေါဟာရဒီပံ) */
         .hero-content h1 {
-            font-size: 2.3rem;
-            margin: 0 0 10px 0;
+            font-size: 2.1rem;
+            margin: 0 auto 10px auto;
+            text-align: center;        
             font-weight: 700;
             color: #ffffff;
         }
 
+        /* 🏷️ အောက်က စာတန်းငယ် (English-Myanmar Dictionary) */
+        .hero-content h1 .sub-title {
+            display: block;
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 8px;
+            text-align: center;        
+        }
+
+        /* 🎯 (FIXED) ကွန်ပျူတာ Screen ပေါ်တွင်   ညာဘက်အောက်ထောင့် နေရာသစ် */
         .version-badge {
-            display: inline-block;
+            position: absolute;        
+            right: 0;                  /* 👈 ညာဘက်ထောင့်စွန်း ကပ်ရန် */
+            bottom: 0;                 /* 👈 English-Myanmar Dictionary ရဲ့ အောက်ခြေကနေ စိတ်ချရအောင် ခွာပေးထားပါတယ် */
             background-color: #21262d;
             color: var(--accent-color);
-            padding: 2px 10px;
+            padding: 4px 12px;
             border-radius: 20px;
             font-size: 0.85rem;
             font-weight: 600;
             border: 1px solid #30363d;
-            margin-bottom: 20px;
+            white-space: nowrap;
         }
 
         .hero-content p {
@@ -310,13 +332,13 @@
             font-size: 0.9rem;
         }
 
-         /* 📱 MOBILE & TABLET RESPONSIVE STYLES (ဖုန်းမျက်နှာပြင်အတွက် သီးသန့်ပြင်ဆင်ချက်) */
+        /* 📱 MOBILE & TABLET RESPONSIVE STYLES */
         @media (max-width: 992px) {
             nav {
                 padding: 15px 5%;
             }
             .hero {
-                flex-direction: column-reverse; /* ဖုန်းပေါ်တွင် ပုံကိုအပေါ်တင်ပြီး စာကိုအောက်ချချင်လျှင် column-reverse သုံးပါ၊ စာကိုအပေါ်ထားချင်လျှင် column ဟုပြောင်းပါ */
+                flex-direction: column-reverse; 
                 text-align: center;
                 padding: 30px 5% 40px 5%;
                 gap: 20px;
@@ -324,12 +346,33 @@
             .hero-content {
                 max-width: 100%;
             }
+
+            /* ✨ ဖုန်းပေါ်တွင် အပေါ်အောက် လှပစွာ တန်းစီသွားရန် စနစ်သစ် */
+            .title-container {
+                display: flex;
+                flex-direction: column;    
+                align-items: center;
+                gap: 12px;
+                text-align: center;
+                width: 100%;
+                margin-bottom: 25px;
+                padding-bottom: 0;         /* ဖုန်းပေါ်တွင် padding မလိုပါ */
+            }
             .hero-content h1 {
-                font-size: 1.8rem; /* ဖုန်းပေါ်တွင် ခေါင်းစဉ်စာလုံး အရွယ်အစားကို လျှော့ချပေးထားပါသည် */
+                font-size: 1.8rem; 
+                text-align: center;
+                margin: 0 auto;
             }
-            .hero-content h1 span {
-                font-size: 1.4rem;
+            .hero-content h1 .sub-title {
+                font-size: 1.2rem;
+                text-align: center;
+                margin-top: 5px;
             }
+            .version-badge {
+                position: static;          /* 👈 ဖုန်းပေါ်တွင် absolute ကို ဖျက်ပြီး ပုံမှန်အတိုင်း အောက်ကနေ ဝင်စေခြင်း */
+                margin: 5px auto 0 auto;   
+            }
+
             .hero-content p {
                 text-align: center;
                 font-size: 0.95rem;
@@ -341,11 +384,11 @@
             }
             .download-buttons {
                 justify-content: center;
-                flex-direction: column; /* ဖုန်းပေါ်တွင် ဒေါင်းလုဒ်ခလုတ်များကို အပေါ်အောက် တန်းစီပေးပါသည် */
+                flex-direction: column; 
                 gap: 10px;
             }
             .btn {
-                width: 100%; /* ခလုတ်များကို ဖုန်းမျက်နှာပြင်အပြည့် ဖြစ်စေပါသည် */
+                width: 100%; 
                 box-sizing: border-box;
             }
             .hero-image {
@@ -354,7 +397,7 @@
                 width: 100%;
             }
             .preview-container {
-                max-width: 340px; /* ဖုန်းပေါ်တွင် App ပုံကြီး အဆမတန် ကြီးမနေအောင် ထိန်းပေးပါသည် */
+                max-width: 340px; 
                 margin: 0 auto;
             }
             .main-content {
@@ -379,7 +422,10 @@
                 margin: 0 10px;
             }
             .hero-content h1 {
-                font-size: 1.6rem;
+                font-size: 1.5rem; 
+            }
+            .hero-content h1 .sub-title {
+                font-size: 1.05rem;
             }
         }
     </style>
@@ -399,8 +445,10 @@
 
     <div class="hero">
         <div class="hero-content">
-            <h1><h1>ဝေါဟာရဒီပံ ( Wawhara Dipan ) English-Myanmar Dictionary</h1></h1>
-            <div class="version-badge">Desktop Version v1.0.1</div>
+            <div class="title-container">
+                <h1>ဝေါဟာရဒီပံ ( Wawhara Dipan ) <span class="sub-title">English-Myanmar Dictionary</span></h1>
+                <div class="version-badge">Desktop Version v1.0.1</div>
+            </div>
             
             <p>ဝေါဟာရဒီပံ (Wawhara Dipan) သည် လေ့လာသင်ယူသူများနှင့် အများပြည်သူ ဗဟုသုတတိုးတက်ရေးအတွက် ရည်ရွယ်၍ အခမဲ့ ဖြန့်ချိသော Windows Desktop သုံး Myanmar-English / English-Myanmar Dictionary ဆော့ဖ်ဝဲလ် ဖြစ်ပါသည်။</p>
             <p class="en-text">Wawhara Dipan is a free offline Myanmar-English and English-Myanmar Dictionary application designed for Windows Desktop. It aims to assist students, language learners, and the general public in enhancing their vocabulary and language skills.</p>
