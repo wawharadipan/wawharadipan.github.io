@@ -26,69 +26,94 @@
         :root {
             --primary-color: #161b22;
             --accent-color: #58a6ff;
-            --bg-gradient: linear-gradient(135deg, #1f1f2e 0%, #111118 100%);
+            --accent-glow: rgba(88, 166, 255, 0.25);
+            --bg-gradient: linear-gradient(145deg, #14161f 0%, #0a0c14 100%);
             --text-main: #f0f6fc;
             --text-muted: #8b949e;
-            --card-bg: #161b22;
-            --border-color: #21262d;
+            --card-bg: rgba(22, 27, 34, 0.70);
+            --border-color: rgba(48, 54, 61, 0.5);
+            --shadow-soft: 0 12px 40px rgba(0, 0, 0, 0.6);
+            --shadow-hover: 0 20px 50px rgba(0, 0, 0, 0.8);
         }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #0d1117;
+            background: var(--bg-gradient);
             color: var(--text-main);
             line-height: 1.8;
+            min-height: 100vh;
+        }
+
+        /* Glassmorphism Base */
+        .glass {
+            background: var(--card-bg);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-color);
         }
 
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 10%;
-            background-color: var(--primary-color);
-            border-bottom: 1px solid var(--border-color);
+            padding: 14px 10%;
+            background: rgba(10, 12, 20, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         nav .logo-area {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
             text-decoration: none;
             color: var(--text-main);
-            font-weight: bold;
+            font-weight: 700;
             font-size: 1.25rem;
+            letter-spacing: -0.3px;
         }
 
         nav .logo-area img {
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
             object-fit: cover;
-            border: 1px solid #30363d;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
         }
 
         nav .links a {
             color: var(--text-muted);
             text-decoration: none;
-            margin-left: 20px;
+            margin-left: 26px;
             font-size: 0.95rem;
-            transition: color 0.2s;
+            font-weight: 500;
+            transition: color 0.3s ease, border-color 0.3s ease;
+            padding-bottom: 4px;
+            border-bottom: 2px solid transparent;
         }
 
         nav .links a:hover {
-            color: var(--accent-color);
+            color: #ffffff;
+            border-bottom-color: var(--accent-color);
         }
 
         .hero {
-            background: var(--bg-gradient);
-            padding: 30px 10% 60px 10%;
+            background: radial-gradient(ellipse at 15% 25%, rgba(88, 166, 255, 0.05), transparent 65%),
+                        radial-gradient(ellipse at 85% 75%, rgba(109, 107, 252, 0.05), transparent 60%),
+                        var(--bg-gradient);
+            padding: 35px 10% 65px 10%;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 40px;
-            border-bottom: 1px solid var(--border-color);
+            gap: 50px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.02);
         }
 
         .hero-content {
@@ -96,99 +121,106 @@
             max-width: 650px;
         }
 
-        /* 📦 (NEW) ခေါင်းစဉ်နှင့် Badge ကို ထိန်းချုပ်ပေးမည့် မူရင်း Container Styles */
         .title-container {
-            position: relative;        
+            position: relative;
             width: 100%;
-            text-align: center;
-            margin-bottom: 35px;       /* 👈 အောက်က စာပိုဒ်တွေနဲ့ အကွာအဝေး ပိုကျယ်ပေးထားပါတယ် */
-            padding-bottom: 35px;      /* 👈 Badge အတွက် အောက်ခြေမှာ ၃၅px နေရာလွတ် အတိအကျ ချန်ထားတာပါ */
+            margin-bottom: 30px;
+            padding-bottom: 28px;
         }
 
-        /* 👑 မူရင်းခေါင်းစဉ်ကြီး (ဝေါဟာရဒီပံ) */
         .hero-content h1 {
-            font-size: 2.1rem;
-            margin: 0 auto 10px auto;
-            text-align: center;        
+            font-size: 2.25rem;
+            margin: 0 auto 8px auto;
+            text-align: center;
             font-weight: 700;
             color: #ffffff;
+            letter-spacing: -0.5px;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
         }
 
-        /* 🏷️ အောက်က စာတန်းငယ် (English-Myanmar Dictionary) */
         .hero-content h1 .sub-title {
             display: block;
-            font-size: 1.3rem;
+            font-size: 1.35rem;
             color: var(--text-muted);
             font-weight: 500;
-            margin-top: 8px;
-            text-align: center;        
+            margin-top: 6px;
+            text-align: center;
+            letter-spacing: 0.2px;
         }
 
-        /* 🎯 (FIXED) ကွန်ပျူတာ Screen ပေါ်တွင်   ညာဘက်အောက်ထောင့် နေရာသစ် */
         .version-badge {
-            position: absolute;        
-            right: 0;                  /* 👈 ညာဘက်ထောင့်စွန်း ကပ်ရန် */
-            bottom: 0;                 /* 👈 English-Myanmar Dictionary ရဲ့ အောက်ခြေကနေ စိတ်ချရအောင် ခွာပေးထားပါတယ် */
-            background-color: #21262d;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            background: rgba(88, 166, 255, 0.10);
             color: var(--accent-color);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
+            padding: 4px 16px;
+            border-radius: 40px;
+            font-size: 0.8rem;
             font-weight: 600;
-            border: 1px solid #30363d;
+            border: 1px solid rgba(88, 166, 255, 0.15);
             white-space: nowrap;
+            backdrop-filter: blur(4px);
+            letter-spacing: 0.3px;
         }
 
         .hero-content p {
             font-size: 1.05rem;
-            color: #c9d1d9;
-            margin-bottom: 15px;
+            color: #d1d9e6;
+            margin-bottom: 16px;
             text-align: justify;
+            line-height: 1.9;
         }
 
         .hero-content p.en-text {
-            color: #8b949e;
+            color: var(--text-muted);
             font-size: 0.95rem;
-            border-left: 3px solid #30363d;
-            padding-left: 12px;
-            margin-bottom: 30px;
+            border-left: 3px solid rgba(88, 166, 255, 0.25);
+            padding-left: 16px;
+            margin-bottom: 32px;
         }
 
         .download-buttons {
             display: flex;
-            gap: 15px;
+            gap: 16px;
             flex-wrap: wrap;
         }
 
         .btn {
             display: inline-block;
-            padding: 12px 28px;
+            padding: 13px 32px;
             font-size: 1rem;
             font-weight: 600;
             text-decoration: none;
-            border-radius: 6px;
-            transition: transform 0.2s, background-color 0.2s;
+            border-radius: 40px;
+            transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+            border: none;
+            cursor: pointer;
+            letter-spacing: 0.2px;
         }
 
         .btn-primary {
-            background-color: #007fd4;
+            background: linear-gradient(135deg, #6d6bfc, #4f8cff);
             color: white;
+            box-shadow: 0 8px 28px rgba(88, 166, 255, 0.25);
         }
 
         .btn-primary:hover {
-            background-color: #6d6bfc;
-            transform: translateY(-2px);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 14px 38px rgba(88, 166, 255, 0.35);
         }
 
         .btn-secondary {
-            background-color: #21262d;
+            background: rgba(255, 255, 255, 0.04);
             color: #c9d1d9;
-            border: 1px solid #30363d;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(4px);
         }
 
         .btn-secondary:hover {
-            background-color: #30363d;
-            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-3px);
+            border-color: rgba(255, 255, 255, 0.12);
         }
 
         .hero-image {
@@ -200,74 +232,104 @@
         .preview-container {
             width: 100%;
             max-width: 500px;
-            background-color: #1c2128;
-            border: 1px solid #30363d;
-            border-radius: 12px;
-            padding: 8px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 10px;
+            box-shadow: var(--shadow-soft);
             box-sizing: border-box;
-            transition: transform 0.3s;
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
         }
 
         .preview-container:hover {
             transform: scale(1.02);
+            box-shadow: var(--shadow-hover);
+            border-color: rgba(88, 166, 255, 0.10);
         }
 
         .preview-container img {
             width: 100%;
             height: auto;
-            border-radius: 8px;
+            border-radius: 12px;
             display: block;
         }
 
         .main-content {
-            padding: 60px 10%;
+            padding: 55px 10%;
             max-width: 1000px;
             margin: 0 auto;
         }
 
         .info-section {
-            background-color: var(--card-bg);
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 30px;
-            margin-bottom: 40px;
+            border-radius: 20px;
+            padding: 34px 36px;
+            margin-bottom: 42px;
+            transition: border-color 0.3s ease;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .info-section:hover {
+            border-color: rgba(88, 166, 255, 0.08);
         }
 
         .info-section h2 {
             margin-top: 0;
             color: var(--accent-color);
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            padding-bottom: 14px;
             font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: -0.3px;
         }
 
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            gap: 24px;
             margin-top: 20px;
         }
 
         .feature-card {
-            background-color: #0d1117;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            padding: 20px;
+            background: rgba(13, 17, 23, 0.50);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 24px 22px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(88, 166, 255, 0.12);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+            background: rgba(22, 27, 34, 0.7);
         }
 
         .feature-card h3 {
             margin-top: 0;
             color: #ffffff;
             font-size: 1.15rem;
+            font-weight: 600;
+        }
+
+        .feature-card p {
+            margin: 0;
+            color: #d1d9e6;
         }
 
         .feature-card p.card-en {
             color: var(--text-muted);
-            font-size: 0.9rem;
-            border-top: 1px solid #21262d;
-            padding-top: 8px;
-            margin-top: 8px;
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            padding-top: 10px;
+            margin-top: 10px;
             margin-bottom: 0;
         }
 
@@ -278,21 +340,21 @@
         }
 
         .info-table td {
-            padding: 10px 15px;
-            border-bottom: 1px solid #21262d;
+            padding: 12px 14px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
             font-size: 1rem;
         }
 
         .info-table td:first-child {
-            font-weight: bold;
+            font-weight: 600;
             color: var(--text-muted);
             width: 35%;
         }
 
         .history-item {
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #21262d;
+            margin-bottom: 28px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
         }
         .history-item:last-child {
             border-bottom: none;
@@ -300,77 +362,87 @@
             padding-bottom: 0;
         }
         .history-item h3 {
-            margin: 0 0 10px 0;
+            margin: 0 0 8px 0;
             color: #ffffff;
             font-size: 1.15rem;
+            font-weight: 600;
         }
         .history-item ul {
             margin: 0;
-            padding-left: 20px;
-            color: #c9d1d9;
+            padding-left: 22px;
+            color: #d1d9e6;
         }
 
         .dev-info p {
             margin: 8px 0;
+            color: #d1d9e6;
         }
 
         .note-box {
-            background-color: #1f1f2e;
+            background: rgba(88, 166, 255, 0.04);
             border-left: 4px solid var(--accent-color);
-            padding: 15px;
-            border-radius: 4px;
-            margin-top: 15px;
+            padding: 18px 22px;
+            border-radius: 12px;
+            margin-top: 20px;
             font-size: 0.95rem;
+            color: #d1d9e6;
         }
 
         footer {
-            background-color: #0d1117;
-            padding: 40px 10%;
-            border-top: 1px solid var(--border-color);
+            background: rgba(10, 12, 20, 0.6);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            padding: 35px 10%;
+            border-top: 1px solid rgba(255, 255, 255, 0.02);
             text-align: center;
             color: var(--text-muted);
             font-size: 0.9rem;
         }
 
-        /* 📱 MOBILE & TABLET RESPONSIVE STYLES */
+        /* 📱 MOBILE & TABLET RESPONSIVE */
         @media (max-width: 992px) {
             nav {
-                padding: 15px 5%;
+                padding: 14px 5%;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
+            nav .links a {
+                margin: 0 14px;
             }
             .hero {
-                flex-direction: column-reverse; 
+                flex-direction: column-reverse;
                 text-align: center;
-                padding: 30px 5% 40px 5%;
-                gap: 20px;
+                padding: 30px 5% 45px 5%;
+                gap: 25px;
             }
             .hero-content {
                 max-width: 100%;
             }
 
-            /* ✨ ဖုန်းပေါ်တွင် အပေါ်အောက် လှပစွာ တန်းစီသွားရန် စနစ်သစ် */
             .title-container {
                 display: flex;
-                flex-direction: column;    
+                flex-direction: column;
                 align-items: center;
-                gap: 12px;
+                gap: 8px;
                 text-align: center;
                 width: 100%;
-                margin-bottom: 25px;
-                padding-bottom: 0;         /* ဖုန်းပေါ်တွင် padding မလိုပါ */
+                margin-bottom: 20px;
+                padding-bottom: 0;
             }
             .hero-content h1 {
-                font-size: 1.8rem; 
+                font-size: 1.9rem;
                 text-align: center;
                 margin: 0 auto;
             }
             .hero-content h1 .sub-title {
                 font-size: 1.2rem;
                 text-align: center;
-                margin-top: 5px;
+                margin-top: 4px;
             }
             .version-badge {
-                position: static;          /* 👈 ဖုန်းပေါ်တွင် absolute ကို ဖျက်ပြီး ပုံမှန်အတိုင်း အောက်ကနေ ဝင်စေခြင်း */
-                margin: 5px auto 0 auto;   
+                position: static;
+                margin: 6px auto 0 auto;
             }
 
             .hero-content p {
@@ -384,12 +456,14 @@
             }
             .download-buttons {
                 justify-content: center;
-                flex-direction: column; 
-                gap: 10px;
+                flex-direction: column;
+                gap: 12px;
             }
             .btn {
-                width: 100%; 
+                width: 100%;
                 box-sizing: border-box;
+                text-align: center;
+                justify-content: center;
             }
             .hero-image {
                 justify-content: center;
@@ -397,35 +471,42 @@
                 width: 100%;
             }
             .preview-container {
-                max-width: 340px; 
+                max-width: 360px;
                 margin: 0 auto;
             }
             .main-content {
                 padding: 30px 5%;
             }
             .info-section {
-                padding: 20px;
+                padding: 22px 18px;
             }
         }
 
-        /* ဖုန်းအသေးစားများအတွက် ထပ်ဆင့်ညှိခြင်း */
         @media (max-width: 480px) {
             nav {
                 flex-direction: column;
-                gap: 10px;
-                text-align: center;
-            }
-            nav .links {
-                margin-top: 5px;
+                gap: 8px;
+                padding: 12px 5%;
             }
             nav .links a {
                 margin: 0 10px;
+                font-size: 0.9rem;
             }
             .hero-content h1 {
-                font-size: 1.5rem; 
+                font-size: 1.6rem;
             }
             .hero-content h1 .sub-title {
                 font-size: 1.05rem;
+            }
+            .feature-card {
+                padding: 18px 16px;
+            }
+            .info-table td {
+                padding: 8px 4px;
+                font-size: 0.9rem;
+            }
+            .info-table td:first-child {
+                width: 40%;
             }
         }
     </style>
@@ -548,7 +629,7 @@
             <p><strong>Institution:</strong> CyberVerse Computer Training (North Okkalapa, Yangon, Myanmar)</p>
             <p><strong>Contact / Phone:</strong> 09-799497334</p>
             
-            <p style="margin-top: 20px; border-top: 1px solid #21262d; padding-top: 15px;">
+            <p style="margin-top: 20px; border-top: 1px solid rgba(255,255,255,0.04); padding-top: 16px;">
                 <strong>⚖️ လိုင်စင်နှင့် စည်းကမ်းချက်များ (License):</strong><br>
                 ဆော့ဖ်ဝဲလ်ကို ပညာဒါနအဖြစ် အခမဲ့ လွတ်လပ်စွာ ရယူအသုံးပြုနိုင်ပါသည်။ သို့သော်လည်း စီးပွားဖြစ် ပြန်လည်ရောင်းချခြင်းကို လုံးဝ (လုံးဝ) တားမြစ်ပါသည်။ မူရင်းဖန်တီးသူ၏ ခွင့်ပြုချက်မရှိဘဲ ကုဒ်ကို ပြုပြင်မွမ်းမံခြင်း မပြုလုပ်ရန် မေတ္တာရပ်ခံအပ်ပါသည်။
             </p>
