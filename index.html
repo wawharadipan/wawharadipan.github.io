@@ -9,59 +9,101 @@
     <meta name="description" content="Download Wawhara Dipan, a free offline English-Myanmar Dictionary and Myanmar-English Dictionary software for Windows Desktop.">
     <meta name="keywords" content="English-Myanmar Dictionary, Myanmar-English Dictionary, Wawhara Dipan, ဝေါဟာရဒီပံ, Free Dictionary Download, Windows Dictionary, Offline Dictionary Myanmar">
 
-    <!-- 🚀 Telegram & Social Media Link Preview (Open Graph Tags) -->
+    <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://wawharadipan.github.io/">
     <meta property="og:title" content="Wawhara Dipan (ဝေါဟာရဒီပံ) - Myanmar English Dictionary">
     <meta property="og:description" content="Windows Desktop သုံး Myanmar-English / English-Myanmar Dictionary အခမဲ့ဆော့ဖ်ဝဲလ်ကို ဤနေရာတွင် ဒေါင်းလုဒ်ရယူနိုင်ပါသည်။">
     <meta property="og:image" content="https://wawharadipan.github.io/WAWHARA_DIPAN_SCREEN_SHOT1.png">
-
-    <!-- Twitter/X Preview -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Wawhara Dipan (ဝေါဟာရဒီပံ)">
     <meta name="twitter:description" content="Windows Desktop သုံး Myanmar-English / English-Myanmar Dictionary အခမဲ့ဆော့ဖ်ဝဲလ်">
     <meta name="twitter:image" content="https://wawharadipan.github.io/WAWHARA_DIPAN_SCREEN_SHOT1.png">
 
-<style>
-        :root {
-            --primary-color: #161b22;
-            --accent-color: #58a6ff;
-            --accent-glow: rgba(88, 166, 255, 0.25);
-            --bg-gradient: linear-gradient(145deg, #14161f 0%, #0a0c14 100%);
-            --text-main: #f0f6fc;
-            --text-muted: #8b949e;
-            --card-bg: rgba(22, 27, 34, 0.70);
-            --border-color: rgba(48, 54, 61, 0.5);
-            --shadow-soft: 0 12px 40px rgba(0, 0, 0, 0.6);
-            --shadow-hover: 0 20px 50px rgba(0, 0, 0, 0.8);
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: var(--bg-gradient);
-            color: var(--text-main);
-            line-height: 1.8;
+            font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0a0a12;
+            color: #e8edf5;
             min-height: 100vh;
+            overflow-x: hidden;
         }
 
-        /* Glassmorphism Base */
-        .glass {
-            background: var(--card-bg);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            border: 1px solid var(--border-color);
+        /* ---- Animated Gradient Background ---- */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(-45deg, #0a0a12, #151528, #1a1a35, #0d0d1a);
+            background-size: 400% 400%;
+            animation: gradientShift 18s ease infinite;
         }
 
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* ---- Glow Orbs ---- */
+        .glow-orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.3;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .glow-orb.orb1 {
+            width: 500px;
+            height: 500px;
+            top: -150px;
+            right: -100px;
+            background: #6d6bfc;
+        }
+
+        .glow-orb.orb2 {
+            width: 400px;
+            height: 400px;
+            bottom: -100px;
+            left: -100px;
+            background: #ff6b9d;
+        }
+
+        .glow-orb.orb3 {
+            width: 300px;
+            height: 300px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #58a6ff;
+            opacity: 0.1;
+        }
+
+        /* ---- Navbar ---- */
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 14px 10%;
-            background: rgba(10, 12, 20, 0.85);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+            padding: 18px 8%;
+            background: rgba(10, 10, 18, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.03);
             position: sticky;
             top: 0;
@@ -73,141 +115,183 @@
             align-items: center;
             gap: 14px;
             text-decoration: none;
-            color: var(--text-main);
+            color: #ffffff;
             font-weight: 700;
-            font-size: 1.25rem;
-            letter-spacing: -0.3px;
+            font-size: 1.3rem;
+            letter-spacing: -0.5px;
         }
 
         nav .logo-area img {
-            width: 42px;
-            height: 42px;
-            border-radius: 10px;
+            width: 44px;
+            height: 44px;
+            border-radius: 14px;
             object-fit: cover;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+            border: 2px solid rgba(109, 107, 252, 0.3);
+            box-shadow: 0 0 30px rgba(109, 107, 252, 0.15);
         }
 
         nav .links a {
-            color: var(--text-muted);
+            color: #8b95b0;
             text-decoration: none;
-            margin-left: 26px;
+            margin-left: 28px;
             font-size: 0.95rem;
             font-weight: 500;
-            transition: color 0.3s ease, border-color 0.3s ease;
-            padding-bottom: 4px;
-            border-bottom: 2px solid transparent;
+            transition: all 0.3s ease;
+            padding: 6px 0;
+            position: relative;
+        }
+
+        nav .links a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #6d6bfc, #ff6b9d);
+            transition: width 0.3s ease;
         }
 
         nav .links a:hover {
             color: #ffffff;
-            border-bottom-color: var(--accent-color);
         }
 
+        nav .links a:hover::before {
+            width: 100%;
+        }
+
+        /* ---- Hero (Left-Right Layout) ---- */
         .hero {
-            background: radial-gradient(ellipse at 15% 25%, rgba(88, 166, 255, 0.05), transparent 65%),
-                        radial-gradient(ellipse at 85% 75%, rgba(109, 107, 252, 0.05), transparent 60%),
-                        var(--bg-gradient);
-            padding: 35px 10% 65px 10%;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            padding: 40px 8% 60px 8%;
             gap: 50px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.02);
         }
 
         .hero-content {
             flex: 1.2;
-            max-width: 650px;
+            max-width: 640px;
         }
 
-        .title-container {
-            position: relative;
-            width: 100%;
-            margin-bottom: 30px;
-            padding-bottom: 28px;
+        .hero-badge {
+            display: inline-block;
+            background: rgba(109, 107, 252, 0.15);
+            border: 1px solid rgba(109, 107, 252, 0.2);
+            padding: 6px 22px;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a8a4ff;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+            backdrop-filter: blur(4px);
         }
 
-        .hero-content h1 {
-            font-size: 2.25rem;
-            margin: 0 auto 8px auto;
-            text-align: center;
+        .hero h1 {
+            font-size: 2.8rem;
             font-weight: 700;
-            color: #ffffff;
-            letter-spacing: -0.5px;
-            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+            line-height: 1.15;
+            margin-bottom: 6px;
+            background: linear-gradient(135deg, #ffffff 30%, #a8a4ff 60%, #ff6b9d 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .hero-content h1 .sub-title {
+        .hero h1 .sub-title {
             display: block;
-            font-size: 1.35rem;
-            color: var(--text-muted);
-            font-weight: 500;
+            font-size: 1.3rem;
+            font-weight: 400;
+            -webkit-text-fill-color: #8b95b0;
+            color: #8b95b0;
             margin-top: 6px;
-            text-align: center;
-            letter-spacing: 0.2px;
+            letter-spacing: 0.5px;
         }
 
-        .version-badge {
-            position: absolute;
-            right: 0;
-            bottom: 0;
-            background: rgba(88, 166, 255, 0.10);
-            color: var(--accent-color);
-            padding: 4px 16px;
+        .hero .version-tag {
+            display: inline-block;
+            background: rgba(255, 107, 157, 0.12);
+            border: 1px solid rgba(255, 107, 157, 0.15);
+            padding: 4px 20px;
             border-radius: 40px;
             font-size: 0.8rem;
             font-weight: 600;
-            border: 1px solid rgba(88, 166, 255, 0.15);
-            white-space: nowrap;
-            backdrop-filter: blur(4px);
-            letter-spacing: 0.3px;
+            color: #ff6b9d;
+            margin: 10px 0 16px 0;
         }
 
-        .hero-content p {
+        .hero p {
             font-size: 1.05rem;
-            color: #d1d9e6;
-            margin-bottom: 16px;
-            text-align: justify;
+            color: #b8c2d8;
+            margin: 12px 0 12px 0;
             line-height: 1.9;
+            text-align: justify;
         }
 
-        .hero-content p.en-text {
-            color: var(--text-muted);
+        .hero p.en-text {
+            color: #7a849e;
             font-size: 0.95rem;
-            border-left: 3px solid rgba(88, 166, 255, 0.25);
+            border-left: 3px solid rgba(109, 107, 252, 0.2);
             padding-left: 16px;
-            margin-bottom: 32px;
+            margin-bottom: 28px;
         }
 
+        /* ---- FIXED: Download Buttons Row ---- */
         .download-buttons {
             display: flex;
-            gap: 16px;
+            flex-direction: row;
             flex-wrap: wrap;
+            gap: 14px;
+            align-items: center;
         }
 
         .btn {
-            display: inline-block;
-            padding: 13px 32px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 32px;
             font-size: 1rem;
             font-weight: 600;
             text-decoration: none;
-            border-radius: 40px;
+            border-radius: 50px;
             transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
             border: none;
             cursor: pointer;
-            letter-spacing: 0.2px;
+            letter-spacing: 0.3px;
+            position: relative;
+            overflow: hidden;
+            white-space: nowrap;
+            min-width: 200px;
+            flex-shrink: 0;
         }
 
         .btn-primary {
             background: linear-gradient(135deg, #6d6bfc, #4f8cff);
             color: white;
-            box-shadow: 0 8px 28px rgba(88, 166, 255, 0.25);
+            box-shadow: 0 8px 32px rgba(109, 107, 252, 0.3);
+        }
+
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.05), transparent);
+            transform: rotate(45deg) translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .btn-primary:hover::after {
+            transform: rotate(45deg) translateX(100%);
         }
 
         .btn-primary:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 14px 38px rgba(88, 166, 255, 0.35);
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 14px 40px rgba(109, 107, 252, 0.4);
         }
 
         .btn-secondary {
@@ -223,6 +307,7 @@
             border-color: rgba(255, 255, 255, 0.12);
         }
 
+        /* ---- Hero Image ---- */
         .hero-image {
             flex: 1;
             display: flex;
@@ -231,288 +316,402 @@
 
         .preview-container {
             width: 100%;
-            max-width: 500px;
-            background: var(--card-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 10px;
-            box-shadow: var(--shadow-soft);
-            box-sizing: border-box;
-            transition: transform 0.35s ease, box-shadow 0.35s ease;
+            max-width: 520px;
+            background: rgba(22, 27, 34, 0.4);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 24px;
+            padding: 12px;
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
         }
 
         .preview-container:hover {
-            transform: scale(1.02);
-            box-shadow: var(--shadow-hover);
-            border-color: rgba(88, 166, 255, 0.10);
+            transform: scale(1.02) translateY(-5px);
+            box-shadow: 0 40px 90px rgba(0, 0, 0, 0.8);
+            border-color: rgba(109, 107, 252, 0.1);
         }
 
         .preview-container img {
             width: 100%;
             height: auto;
-            border-radius: 12px;
+            border-radius: 16px;
             display: block;
         }
 
+        /* ---- Main Content ---- */
         .main-content {
-            padding: 55px 10%;
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
+            padding: 20px 8% 60px 8%;
         }
 
-        .info-section {
-            background: var(--card-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 34px 36px;
-            margin-bottom: 42px;
-            transition: border-color 0.3s ease;
-            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
-        }
-
-        .info-section:hover {
-            border-color: rgba(88, 166, 255, 0.08);
-        }
-
-        .info-section h2 {
-            margin-top: 0;
-            color: var(--accent-color);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-            padding-bottom: 14px;
-            font-size: 1.5rem;
+        .section-title {
+            font-size: 1.8rem;
             font-weight: 600;
-            letter-spacing: -0.3px;
+            margin-bottom: 28px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            color: #ffffff;
+        }
+
+        .section-title span {
+            background: linear-gradient(135deg, #6d6bfc, #ff6b9d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(255,255,255,0.06), transparent);
         }
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 24px;
-            margin-top: 20px;
+            margin-bottom: 44px;
         }
 
         .feature-card {
-            background: rgba(13, 17, 23, 0.50);
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
+            background: rgba(13, 17, 23, 0.5);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             border: 1px solid rgba(255, 255, 255, 0.03);
-            border-radius: 16px;
-            padding: 24px 22px;
-            transition: all 0.3s ease;
+            border-radius: 20px;
+            padding: 26px 24px;
+            transition: all 0.35s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #6d6bfc, #ff6b9d, #58a6ff);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
         }
 
         .feature-card:hover {
-            transform: translateY(-6px);
-            border-color: rgba(88, 166, 255, 0.12);
-            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+            transform: translateY(-8px) scale(1.01);
+            border-color: rgba(109, 107, 252, 0.15);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
             background: rgba(22, 27, 34, 0.7);
         }
 
+        .feature-card .icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
         .feature-card h3 {
-            margin-top: 0;
-            color: #ffffff;
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 6px;
         }
 
         .feature-card p {
-            margin: 0;
-            color: #d1d9e6;
+            color: #b8c2d8;
+            font-size: 0.95rem;
+            line-height: 1.7;
         }
 
-        .feature-card p.card-en {
-            color: var(--text-muted);
-            font-size: 0.85rem;
+        .feature-card .card-en {
+            color: #7a849e;
+            font-size: 0.82rem;
             border-top: 1px solid rgba(255, 255, 255, 0.04);
             padding-top: 10px;
             margin-top: 10px;
-            margin-bottom: 0;
+        }
+
+        .glass-card {
+            background: rgba(13, 17, 23, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            padding: 32px 36px;
+            margin-bottom: 40px;
+            transition: border-color 0.3s ease;
+        }
+
+        .glass-card:hover {
+            border-color: rgba(109, 107, 252, 0.08);
+        }
+
+        .glass-card h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .glass-card h2 .emoji {
+            font-size: 1.6rem;
         }
 
         .info-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 15px;
         }
 
         .info-table td {
             padding: 12px 14px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-            font-size: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            font-size: 0.95rem;
         }
 
         .info-table td:first-child {
             font-weight: 600;
-            color: var(--text-muted);
-            width: 35%;
+            color: #8b95b0;
+            width: 34%;
+        }
+
+        .info-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .note-box {
+            background: rgba(109, 107, 252, 0.05);
+            border-left: 4px solid #6d6bfc;
+            padding: 18px 22px;
+            border-radius: 12px;
+            margin-top: 20px;
+            font-size: 0.95rem;
+            color: #b8c2d8;
         }
 
         .history-item {
             margin-bottom: 28px;
-            padding-bottom: 18px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            padding-bottom: 22px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
         }
+
         .history-item:last-child {
             border-bottom: none;
             margin-bottom: 0;
             padding-bottom: 0;
         }
+
         .history-item h3 {
-            margin: 0 0 8px 0;
-            color: #ffffff;
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 6px;
         }
+
         .history-item ul {
-            margin: 0;
             padding-left: 22px;
-            color: #d1d9e6;
+            color: #b8c2d8;
+        }
+
+        .history-item ul li {
+            margin-bottom: 4px;
         }
 
         .dev-info p {
             margin: 8px 0;
-            color: #d1d9e6;
+            color: #b8c2d8;
         }
 
-        .note-box {
-            background: rgba(88, 166, 255, 0.04);
-            border-left: 4px solid var(--accent-color);
-            padding: 18px 22px;
-            border-radius: 12px;
+        .dev-info .license-box {
             margin-top: 20px;
+            padding-top: 18px;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
             font-size: 0.95rem;
-            color: #d1d9e6;
+            color: #b8c2d8;
         }
 
-        footer {
-            background: rgba(10, 12, 20, 0.6);
+        .footer-quote {
+            text-align: center;
+            margin-top: 40px;
+            padding: 30px 20px;
+            background: rgba(13, 17, 23, 0.3);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
-            padding: 35px 10%;
-            border-top: 1px solid rgba(255, 255, 255, 0.02);
-            text-align: center;
-            color: var(--text-muted);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.02);
+        }
+
+        .footer-quote p {
+            color: #8b95b0;
+            font-style: italic;
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+
+        .footer-quote .en-quote {
+            color: #5d6a7e;
             font-size: 0.9rem;
         }
 
-        /* 📱 MOBILE & TABLET RESPONSIVE */
+        footer {
+            text-align: center;
+            padding: 30px 8%;
+            border-top: 1px solid rgba(255, 255, 255, 0.02);
+            color: #5d6a7e;
+            font-size: 0.85rem;
+            margin-top: 10px;
+        }
+
+        /* ---- Responsive ---- */
         @media (max-width: 992px) {
-            nav {
-                padding: 14px 5%;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 10px;
-            }
-            nav .links a {
-                margin: 0 14px;
-            }
             .hero {
                 flex-direction: column-reverse;
                 text-align: center;
-                padding: 30px 5% 45px 5%;
-                gap: 25px;
+                padding: 30px 5% 40px 5%;
+                gap: 30px;
             }
+
             .hero-content {
                 max-width: 100%;
             }
 
-            .title-container {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 8px;
-                text-align: center;
-                width: 100%;
-                margin-bottom: 20px;
-                padding-bottom: 0;
-            }
-            .hero-content h1 {
-                font-size: 1.9rem;
-                text-align: center;
-                margin: 0 auto;
-            }
-            .hero-content h1 .sub-title {
-                font-size: 1.2rem;
-                text-align: center;
-                margin-top: 4px;
-            }
-            .version-badge {
-                position: static;
-                margin: 6px auto 0 auto;
+            .hero h1 {
+                font-size: 2.2rem;
             }
 
-            .hero-content p {
-                text-align: center;
-                font-size: 0.95rem;
+            .hero h1 .sub-title {
+                font-size: 1.1rem;
             }
-            .hero-content p.en-text {
+
+            .hero p {
+                text-align: center;
+            }
+
+            .hero p.en-text {
                 border-left: none;
                 padding-left: 0;
                 text-align: center;
             }
+
             .download-buttons {
                 justify-content: center;
-                flex-direction: column;
-                gap: 12px;
+                flex-direction: row;
+                flex-wrap: wrap;
             }
+
+            .btn {
+                min-width: 180px;
+                flex-shrink: 0;
+            }
+
+            .preview-container {
+                max-width: 400px;
+            }
+
+            .main-content {
+                padding: 10px 5% 40px 5%;
+            }
+
+            .glass-card {
+                padding: 22px 18px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 1.4rem;
+            }
+        }
+
+        /* ---- Mobile: buttons stack vertically ---- */
+        @media (max-width: 600px) {
+            .download-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
             .btn {
                 width: 100%;
-                box-sizing: border-box;
-                text-align: center;
-                justify-content: center;
-            }
-            .hero-image {
-                justify-content: center;
-                max-width: 100%;
-                width: 100%;
-            }
-            .preview-container {
-                max-width: 360px;
-                margin: 0 auto;
-            }
-            .main-content {
-                padding: 30px 5%;
-            }
-            .info-section {
-                padding: 22px 18px;
+                min-width: unset;
+                flex-shrink: 1;
             }
         }
 
         @media (max-width: 480px) {
             nav {
                 flex-direction: column;
-                gap: 8px;
-                padding: 12px 5%;
+                gap: 12px;
+                padding: 14px 5%;
             }
+
             nav .links a {
-                margin: 0 10px;
+                margin: 0 14px;
                 font-size: 0.9rem;
             }
-            .hero-content h1 {
-                font-size: 1.6rem;
+
+            .hero h1 {
+                font-size: 1.8rem;
             }
-            .hero-content h1 .sub-title {
-                font-size: 1.05rem;
+
+            .hero h1 .sub-title {
+                font-size: 0.95rem;
             }
+
+            .hero-badge {
+                font-size: 0.65rem;
+                padding: 4px 16px;
+            }
+
             .feature-card {
-                padding: 18px 16px;
+                padding: 20px 16px;
             }
+
             .info-table td {
-                padding: 8px 4px;
-                font-size: 0.9rem;
+                display: block;
+                width: 100%;
+                padding: 6px 0;
+                border: none;
             }
+
             .info-table td:first-child {
-                width: 40%;
+                width: 100%;
+                padding-top: 12px;
+            }
+
+            .info-table tr {
+                display: block;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+                padding: 4px 0;
+            }
+
+            .info-table tr:last-child {
+                border-bottom: none;
             }
         }
     </style>
 </head>
 <body>
 
+    <!-- Background Animation -->
+    <div class="bg-animation"></div>
+    <div class="glow-orb orb1"></div>
+    <div class="glow-orb orb2"></div>
+    <div class="glow-orb orb3"></div>
+
+    <!-- Navbar -->
     <nav>
         <a href="#" class="logo-area">
             <img src="app_logo.png" alt="Wawhara Dipan Logo" onerror="this.style.display='none'">
@@ -524,63 +723,72 @@
         </div>
     </nav>
 
+    <!-- Hero -->
     <div class="hero">
         <div class="hero-content">
-            <div class="title-container">
-                <h1>ဝေါဟာရဒီပံ ( Wawhara Dipan ) <span class="sub-title">English-Myanmar Dictionary</span></h1>
-                <div class="version-badge">Desktop Version v1.0.1</div>
-            </div>
-            
+            <div class="hero-badge">✦ Free Desktop Dictionary</div>
+            <h1>
+                ဝေါဟာရဒီပံ
+                <span class="sub-title">Wawhara Dipan · English-Myanmar Dictionary</span>
+            </h1>
+            <div class="version-tag">⚡ Desktop Version v1.0.1</div>
+
             <p>ဝေါဟာရဒီပံ (Wawhara Dipan) သည် လေ့လာသင်ယူသူများနှင့် အများပြည်သူ ဗဟုသုတတိုးတက်ရေးအတွက် ရည်ရွယ်၍ အခမဲ့ ဖြန့်ချိသော Windows Desktop သုံး Myanmar-English / English-Myanmar Dictionary ဆော့ဖ်ဝဲလ် ဖြစ်ပါသည်။</p>
             <p class="en-text">Wawhara Dipan is a free offline Myanmar-English and English-Myanmar Dictionary application designed for Windows Desktop. It aims to assist students, language learners, and the general public in enhancing their vocabulary and language skills.</p>
-            
+
             <div class="download-buttons">
                 <a href="https://github.com/wawharadipan/wawharadipan.github.io/releases/download/v1.0.1/WawharaDipan_Setup_v1.0.1.zip" class="btn btn-primary" target="_blank">📥 Direct Download v1.0.1 (.zip)</a>
                 <a href="https://archive.org/details/wawhara-dipan" class="btn btn-secondary" target="_blank">🌐 View Source Archive</a>
             </div>
         </div>
+
         <div class="hero-image">
             <div class="preview-container">
-                <img src="WAWHARA_DIPAN_SCREEN_SHOT1.png" alt="Wawhara Dipan Desktop Preview" onerror="this.src='https://via.placeholder.com/500x300/1c2128/8b949e?text=Desktop+App+Preview'">
+                <img src="WAWHARA_DIPAN_SCREEN_SHOT1.png" alt="Wawhara Dipan Desktop Preview" onerror="this.src='https://via.placeholder.com/520x300/1c2128/8b949e?text=Desktop+App+Preview'">
             </div>
         </div>
     </div>
 
+    <!-- Main Content -->
     <div class="main-content">
-        
-        <div class="info-section">
-            <h2>✨ အဓိက ပါဝင်သော စနစ်များ (Key Features)</h2>
-            <div class="features-grid">
-                
-                <div class="feature-card">
-                    <h3>🔍 (၁) နှစ်ဘာသာ ရှာဖွေနိုင်ခြင်း</h3>
-                    <p style="margin: 0;">English ➔ Myanmar ရော Myanmar ➔ English ပါ အလွယ်တကူ ရှာဖွေနိုင်ခြင်း။</p>
-                    <p class="card-en">Bi-directional Search - Search words effortlessly from English to Myanmar or Myanmar to English.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <h3>🔊 (၂) အသံထွက်စနစ် (Audio)</h3>
-                    <p style="margin: 0;">အင်္ဂလိပ်စာလုံးများ၏ အသံထွက်ကို ခလုတ်နှိပ်၍ မှန်ကန်စွာ နားထောင်နိုင်ခြင်း။</p>
-                    <p class="card-en">Audio Pronunciation - Built-in text-to-speech feature to listen to correct English pronunciations.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <h3>⭐ (၃) မှတ်သားရန်စနစ် (Favorite)</h3>
-                    <p style="margin: 0;">မိမိအလွတ်ကျက်ချင်သော သို့မဟုတ် ခဏခဏကြည့်လိုသော စာလုံးများကို ကြယ်ပွင့်နှိပ်၍ သီးသန့် သိမ်းဆည်းထားနိုင်ခြင်း။</p>
-                    <p class="card-en">Bookmark System - Save and organize difficult or important words for future review.</p>
-                </div>
 
-                <div class="feature-card">
-                    <h3>📋 (၄) ကူးယူခြင်းစနစ် (Copy Text)</h3>
-                    <p style="margin: 0;">စာလုံးနှင့် အဓိပ္ပာယ်ရှင်းလင်းချက်များကို clipboard ထဲသို့ တစ်ချက်နှိပ်ရုံဖြင့် အလွယ်တကူ Copy ကူးယူနိုင်ခြင်း။</p>
-                    <p class="card-en">Easy Copy Text - Quickly copy definitions and meanings to your clipboard for note-taking.</p>
-                </div>
-                
+        <!-- Features -->
+        <div class="section-title">✨ <span>အဓိက ပါဝင်သော စနစ်များ</span> <span style="font-size:0.9rem;color:#5d6a7e;font-weight:400;background:none;-webkit-text-fill-color:#5d6a7e;">Key Features</span></div>
+        <div class="features-grid">
+
+            <div class="feature-card">
+                <span class="icon">🔍</span>
+                <h3>(၁) နှစ်ဘာသာ ရှာဖွေနိုင်ခြင်း</h3>
+                <p>English ➔ Myanmar ရော Myanmar ➔ English ပါ အလွယ်တကူ ရှာဖွေနိုင်ခြင်း။</p>
+                <div class="card-en">Bi-directional Search - Search words effortlessly from English to Myanmar or Myanmar to English.</div>
             </div>
+
+            <div class="feature-card">
+                <span class="icon">🔊</span>
+                <h3>(၂) အသံထွက်စနစ် (Audio)</h3>
+                <p>အင်္ဂလိပ်စာလုံးများ၏ အသံထွက်ကို ခလုတ်နှိပ်၍ မှန်ကန်စွာ နားထောင်နိုင်ခြင်း။</p>
+                <div class="card-en">Audio Pronunciation - Built-in text-to-speech feature to listen to correct English pronunciations.</div>
+            </div>
+
+            <div class="feature-card">
+                <span class="icon">⭐</span>
+                <h3>(၃) မှတ်သားရန်စနစ် (Favorite)</h3>
+                <p>မိမိအလွတ်ကျက်ချင်သော သို့မဟုတ် ခဏခဏကြည့်လိုသော စာလုံးများကို ကြယ်ပွင့်နှိပ်၍ သီးသန့် သိမ်းဆည်းထားနိုင်ခြင်း။</p>
+                <div class="card-en">Bookmark System - Save and organize difficult or important words for future review.</div>
+            </div>
+
+            <div class="feature-card">
+                <span class="icon">📋</span>
+                <h3>(၄) ကူးယူခြင်းစနစ် (Copy Text)</h3>
+                <p>စာလုံးနှင့် အဓိပ္ပာယ်ရှင်းလင်းချက်များကို clipboard ထဲသို့ တစ်ချက်နှိပ်ရုံဖြင့် အလွယ်တကူ Copy ကူးယူနိုင်ခြင်း။</p>
+                <div class="card-en">Easy Copy Text - Quickly copy definitions and meanings to your clipboard for note-taking.</div>
+            </div>
+
         </div>
 
-        <div class="info-section">
-            <h2>🖥️ ဆော့ဖ်ဝဲလ်ဆိုင်ရာ အချက်အလက်များ (Specifications)</h2>
+        <!-- Specifications -->
+        <div class="glass-card">
+            <h2><span class="emoji">🖥️</span> ဆော့ဖ်ဝဲလ်ဆိုင်ရာ အချက်အလက်များ <span style="font-size:0.9rem;color:#5d6a7e;font-weight:400;">Specifications</span></h2>
             <table class="info-table">
                 <tr><td>ဆော့ဖ်ဝဲလ်အမည် (Name)</td><td>Wawhara Dipan (ဝေါဟာရဒီပံ)</td></tr>
                 <tr><td>ဆော့ဖ်ဝဲလ်အမျိုးအစား (Type)</td><td>Desktop Dictionary Software</td></tr>
@@ -592,7 +800,7 @@
                 <tr><td>ဒေတာဘေ့စ်စနစ် (Database)</td><td>Embedded SQLite (Auto-extract to AppData)</td></tr>
                 <tr><td>အသုံးပြုခွင့် မူဝါဒ (License)</td><td>Free & Open Resource (ပညာဒါန အခမဲ့)</td></tr>
             </table>
-            
+
             <div class="note-box">
                 <strong>💡 First Run Note / ထည့်သွင်းအသုံးပြုနည်း:</strong><br>
                 1. Download ရလာသော Zip ဖိုင်ကိုဖြည်၍ Installer ကို Run ပါ။ Setup Wizard အတိုင်း ထည့်သွင်းပါ။<br>
@@ -600,9 +808,10 @@
             </div>
         </div>
 
-        <div class="info-section">
-            <h2>📜 ဗားရှင်းမှတ်တမ်း (Version History)</h2>
-            
+        <!-- Version History -->
+        <div class="glass-card">
+            <h2><span class="emoji">📜</span> ဗားရှင်းမှတ်တမ်း <span style="font-size:0.9rem;color:#5d6a7e;font-weight:400;">Version History</span></h2>
+
             <div class="history-item">
                 <h3>🚀 Version 1.0.1 (Build 2602) - 2026-03-15</h3>
                 <ul>
@@ -623,25 +832,28 @@
             </div>
         </div>
 
-        <div class="info-section dev-info">
-            <h2>👨‍🏫 ဖန်တီးသူ အချက်အလက် (Developer Information)</h2>
+        <!-- Developer -->
+        <div class="glass-card dev-info">
+            <h2><span class="emoji">👨‍🏫</span> ဖန်တီးသူ အချက်အလက် <span style="font-size:0.9rem;color:#5d6a7e;font-weight:400;">Developer Information</span></h2>
             <p><strong>Developer:</strong> U Myo Kyaw Thu (Computer Instructor)</p>
             <p><strong>Institution:</strong> CyberVerse Computer Training (North Okkalapa, Yangon, Myanmar)</p>
             <p><strong>Contact / Phone:</strong> 09-799497334</p>
-            
-            <p style="margin-top: 20px; border-top: 1px solid rgba(255,255,255,0.04); padding-top: 16px;">
+
+            <div class="license-box">
                 <strong>⚖️ လိုင်စင်နှင့် စည်းကမ်းချက်များ (License):</strong><br>
                 ဆော့ဖ်ဝဲလ်ကို ပညာဒါနအဖြစ် အခမဲ့ လွတ်လပ်စွာ ရယူအသုံးပြုနိုင်ပါသည်။ သို့သော်လည်း စီးပွားဖြစ် ပြန်လည်ရောင်းချခြင်းကို လုံးဝ (လုံးဝ) တားမြစ်ပါသည်။ မူရင်းဖန်တီးသူ၏ ခွင့်ပြုချက်မရှိဘဲ ကုဒ်ကို ပြုပြင်မွမ်းမံခြင်း မပြုလုပ်ရန် မေတ္တာရပ်ခံအပ်ပါသည်။
-            </p>
+            </div>
         </div>
 
-        <div style="text-align: center; margin-top: 40px; color: var(--text-muted); font-style: italic;">
+        <!-- Quote -->
+        <div class="footer-quote">
             <p>“ ဤဆော့ဖ်ဝဲလ်ကို လေ့လာသင်ယူသူအားလုံးအတွက် အခမဲ့ ရရှိစေရန် ရည်ရွယ်၍ ဖန်တီးပေးထားခြင်းဖြစ်ပါသည်။ သင်ယူမှုအတွက် အထောက်အကူဖြစ်စေရန် ဆုတောင်းမိပါသည်။ ”</p>
-            <p style="font-size: 0.9rem;">“ This software is created with the intention of providing free access to all learners. May it support your educational journey. ”</p>
+            <p class="en-quote">“ This software is created with the intention of providing free access to all learners. May it support your educational journey. ”</p>
         </div>
 
     </div>
 
+    <!-- Footer -->
     <footer>
         <p>© 2026 Myo Kyaw Thu & CyberVerse Computer Training. All Rights Reserved. Powered by GitHub Pages.</p>
     </footer>
