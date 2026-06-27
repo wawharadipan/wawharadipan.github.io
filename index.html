@@ -794,7 +794,7 @@
     <!-- ===== MAIN CONTENT ===== -->
     <div class="main-content">
 
-     <!-- ====== Windows 11 File Explorer ပုံစံ Toast ====== -->
+    <!-- ====== Windows 11 File Explorer ပုံစံ Toast (Zoom In/Out ပါ) ====== -->
 <div id="toastNotification" style="
     position: fixed;
     bottom: 24px;
@@ -812,7 +812,7 @@
     pointer-events: none;
     font-family: 'Segoe UI', -apple-system, sans-serif;
 ">
-    <!-- Title Bar (Windows 11 ပုံစံ) -->
+    <!-- Title Bar (Zoom ခလုတ်တွေပါ) -->
     <div style="
         background: #2d2d2d;
         padding: 6px 14px;
@@ -821,6 +821,8 @@
         align-items: center;
         justify-content: space-between;
         border-bottom: 1px solid #3d3d3d;
+        flex-wrap: wrap;
+        gap: 4px;
     ">
         <div style="display: flex; align-items: center; gap: 10px;">
             <span style="font-size: 0.9rem;">📁</span>
@@ -838,7 +840,70 @@
                 ဖွင့်ထား
             </span>
         </div>
-        <div style="display: flex; gap: 6px;">
+        <div style="display: flex; gap: 4px; align-items: center; flex-wrap: wrap;">
+            <!-- ★ Zoom In (+) -->
+            <button onclick="zoomIn()" style="
+                background: none;
+                border: none;
+                color: #8b95b0;
+                font-size: 0.8rem;
+                cursor: pointer;
+                padding: 0 4px;
+                transition: 0.2s ease;
+            " onmouseover="this.style.color='#4fa8ff'" onmouseout="this.style.color='#8b95b0'" title="ချဲ့ရန် (Zoom In)">
+                🔍+
+            </button>
+            <!-- ★ Zoom Out (−) -->
+            <button onclick="zoomOut()" style="
+                background: none;
+                border: none;
+                color: #8b95b0;
+                font-size: 0.8rem;
+                cursor: pointer;
+                padding: 0 4px;
+                transition: 0.2s ease;
+            " onmouseover="this.style.color='#4fa8ff'" onmouseout="this.style.color='#8b95b0'" title="သေးရန် (Zoom Out)">
+                🔍−
+            </button>
+            <!-- ★ Reset Zoom -->
+            <button onclick="resetZoom()" style="
+                background: none;
+                border: none;
+                color: #8b95b0;
+                font-size: 0.8rem;
+                cursor: pointer;
+                padding: 0 4px;
+                transition: 0.2s ease;
+            " onmouseover="this.style.color='#f0e6b0'" onmouseout="this.style.color='#8b95b0'" title="မူလအရွယ်ပြန်">
+                ⟳
+            </button>
+            <!-- ★ Minimize -->
+            <button onclick="toggleMinimize()" id="minimizeBtn" style="
+                background: none;
+                border: none;
+                color: #8b95b0;
+                font-size: 0.85rem;
+                cursor: pointer;
+                padding: 0 4px;
+                transition: 0.2s ease;
+                font-weight: 600;
+            " onmouseover="this.style.color='#e8edf5'" onmouseout="this.style.color='#8b95b0'">
+                ─
+            </button>
+            <!-- ★ Maximize -->
+            <button onclick="toggleMaximize()" id="maximizeBtn" style="
+                background: none;
+                border: none;
+                color: #8b95b0;
+                font-size: 0.8rem;
+                cursor: pointer;
+                padding: 0 4px;
+                transition: 0.2s ease;
+                font-weight: 600;
+            " onmouseover="this.style.color='#e8edf5'" onmouseout="this.style.color='#8b95b0'">
+                ☐
+            </button>
+            <!-- ★ Close -->
             <button onclick="closeToast()" style="
                 background: none;
                 border: none;
@@ -853,9 +918,9 @@
         </div>
     </div>
 
-    <!-- Content (Explorer ပုံစံ) -->
-    <div style="display: flex; min-height: 140px;">
-        <!-- Left Sidebar (Folder Tree) -->
+    <!-- Content Body (အကြောင်းအရာအကုန်) -->
+    <div id="toastBody" style="display: flex; min-height: 140px; overflow: hidden; transition: all 0.3s ease;">
+        <!-- Left Sidebar -->
         <div style="
             background: #252525;
             padding: 10px 12px;
@@ -882,33 +947,30 @@
             </div>
         </div>
 
-        <!-- Right Side (File List) -->
-        <div style="
+        <!-- Right Side (Zoom ပြောင်းလို့ရတဲ့ စာလုံးတွေ) -->
+        <div id="zoomContent" style="
             background: #1c1c1c;
             padding: 10px 14px;
             flex: 1;
+            font-size: 0.75rem;
+            transition: font-size 0.2s ease;
         ">
-            <!-- Header -->
             <div style="display: flex; align-items: center; gap: 8px; border-bottom: 1px solid #2d2d2d; padding-bottom: 4px; margin-bottom: 6px;">
-                <span style="color: #8b95b0; font-size: 0.6rem; font-weight: 600; text-transform: uppercase;">အမည်</span>
-                <span style="color: #8b95b0; font-size: 0.6rem; font-weight: 600; text-transform: uppercase; margin-left: auto;">အသေးစိတ်</span>
-            </div>
-
-            <!-- File List -->
-            <div style="display: flex; align-items: center; gap: 8px; padding: 2px 0;">
-                <span style="color: #e8edf5; font-size: 0.75rem;">📅 သင်တန်းရက်</span>
-                <span style="color: #8b95b0; font-size: 0.65rem; margin-left: auto;">စနေ + တနင်္ဂနွေ</span>
+                <span style="color: #8b95b0; font-size: 0.8em; font-weight: 600; text-transform: uppercase;">အမည်</span>
+                <span style="color: #8b95b0; font-size: 0.8em; font-weight: 600; text-transform: uppercase; margin-left: auto;">အသေးစိတ်</span>
             </div>
             <div style="display: flex; align-items: center; gap: 8px; padding: 2px 0;">
-                <span style="color: #e8edf5; font-size: 0.75rem;">🕐 အချိန်</span>
-                <span style="color: #8b95b0; font-size: 0.65rem; margin-left: auto;">မနက် ၉:၀၀ - ၁၁:၀၀</span>
+                <span style="color: #e8edf5;">📅 သင်တန်းရက်</span>
+                <span style="color: #8b95b0; margin-left: auto;">စနေ + တနင်္ဂနွေ</span>
             </div>
             <div style="display: flex; align-items: center; gap: 8px; padding: 2px 0;">
-                <span style="color: #e8edf5; font-size: 0.75rem;">⏱️ ကာလ</span>
-                <span style="color: #8b95b0; font-size: 0.65rem; margin-left: auto;">၂ လ (၃၂ နာရီ)</span>
+                <span style="color: #e8edf5;">🕐 အချိန်</span>
+                <span style="color: #8b95b0; margin-left: auto;">မနက် ၉:၀၀ - ၁၁:၀၀</span>
             </div>
-
-            <!-- Price (ပြင်ဆင်ပြီး) -->
+            <div style="display: flex; align-items: center; gap: 8px; padding: 2px 0;">
+                <span style="color: #e8edf5;">⏱️ ကာလ</span>
+                <span style="color: #8b95b0; margin-left: auto;">၂ လ (၃၂ နာရီ)</span>
+            </div>
             <div style="
                 display: flex;
                 align-items: center;
@@ -918,34 +980,27 @@
                 margin-top: 4px;
                 padding-top: 6px;
             ">
-                <span style="color: #ff6b9d; font-weight: 700; font-size: 0.95rem;">၅၀,၀၀၀ ကျပ်</span>
-                <span style="color: #8b95b0; font-size: 0.65rem;">/ ၁ လ</span>
+                <span style="color: #ff6b9d; font-weight: 700; font-size: 1.2em;">၅၀,၀၀၀ ကျပ်</span>
+                <span style="color: #8b95b0; font-size: 0.8em;">/ ၁ လ</span>
                 <span style="
                     background: rgba(255, 215, 0, 0.06);
                     border: 1px solid rgba(255, 215, 0, 0.08);
                     padding: 0px 8px;
                     border-radius: 30px;
-                    font-size: 0.5rem;
+                    font-size: 0.65em;
                     color: #f0e6b0;
                     margin-left: auto;
                 ">
                     ⭐ ၂ လ = ၁၀၀,၀၀၀ ကျပ်
                 </span>
             </div>
-
-            <!-- Limit Badge -->
-            <div style="
-                display: flex;
-                align-items: center;
-                gap: 8px;
-                padding: 2px 0;
-            ">
+            <div style="display: flex; align-items: center; gap: 8px; padding: 2px 0;">
                 <span style="
                     background: rgba(255, 107, 157, 0.06);
                     border: 1px solid rgba(255, 107, 157, 0.08);
                     padding: 0px 10px;
                     border-radius: 30px;
-                    font-size: 0.55rem;
+                    font-size: 0.7em;
                     color: #ff6b9d;
                     margin-left: auto;
                 ">
@@ -955,8 +1010,8 @@
         </div>
     </div>
 
-    <!-- Footer (Status Bar - Windows 11 ပုံစံ) -->
-    <div style="
+    <!-- Footer -->
+    <div id="toastFooter" style="
         background: #2d2d2d;
         padding: 4px 14px;
         border-radius: 0 0 8px 8px;
@@ -966,15 +1021,12 @@
         align-items: center;
         font-size: 0.6rem;
         color: #8b95b0;
+        transition: all 0.3s ease;
     ">
         <div style="display: flex; align-items: center; gap: 12px;">
             <span>📞 09-799497334</span>
-            <span style="color: #3d3d3d;">|</span>
-            <span>📧 myokyawthu.info@gmail.com</span>
         </div>
         <div style="display: flex; align-items: center; gap: 8px;">
-             
-            <span style="color: #3d3d3d;">|</span>
             <a href="tel:09799497334" style="
                 color: #0078d4;
                 text-decoration: none;
@@ -989,6 +1041,93 @@
 </div>
 
 <script>
+    // ====== Zoom Functions ======
+    let currentZoom = 1;
+    const zoomStep = 0.1;
+    const minZoom = 0.6;
+    const maxZoom = 2.0;
+
+    function zoomIn() {
+        if (currentZoom < maxZoom) {
+            currentZoom += zoomStep;
+            applyZoom();
+        }
+    }
+
+    function zoomOut() {
+        if (currentZoom > minZoom) {
+            currentZoom -= zoomStep;
+            applyZoom();
+        }
+    }
+
+    function resetZoom() {
+        currentZoom = 1;
+        applyZoom();
+    }
+
+    function applyZoom() {
+        const content = document.getElementById('zoomContent');
+        content.style.fontSize = (0.75 * currentZoom) + 'rem';
+        
+        // Child elements အကုန်လုံးကိုလည်း ပြောင်း
+        const children = content.querySelectorAll('*');
+        children.forEach(child => {
+            // သူ့ရဲ့ font-size ကို မပြောင်းဘဲ parent က ဆုံးဖြတ်တာမို့ ဒီမှာ ဘာမှမလုပ်ဘူး
+        });
+    }
+
+    // ====== Minimize / Maximize Functions ======
+    let isMinimized = false;
+
+    function toggleMinimize() {
+        const body = document.getElementById('toastBody');
+        const footer = document.getElementById('toastFooter');
+        const btn = document.getElementById('minimizeBtn');
+        
+        if (isMinimized) {
+            body.style.display = 'flex';
+            footer.style.display = 'flex';
+            btn.textContent = '─';
+            isMinimized = false;
+        } else {
+            body.style.display = 'none';
+            footer.style.display = 'none';
+            btn.textContent = '☐';
+            isMinimized = true;
+        }
+    }
+
+    function toggleMaximize() {
+        const toast = document.getElementById('toastNotification');
+        const btn = document.getElementById('maximizeBtn');
+        
+        if (toast.style.maxWidth === '100%' || toast.style.maxWidth === '100vw') {
+            toast.style.maxWidth = '420px';
+            toast.style.width = '100%';
+            toast.style.bottom = '24px';
+            toast.style.right = '24px';
+            toast.style.borderRadius = '8px';
+            btn.textContent = '☐';
+        } else {
+            toast.style.maxWidth = '100vw';
+            toast.style.width = '100vw';
+            toast.style.bottom = '0';
+            toast.style.right = '0';
+            toast.style.borderRadius = '0';
+            btn.textContent = '⤢';
+        }
+    }
+
+    // ====== Close Function ======
+    function closeToast() {
+        const toast = document.getElementById('toastNotification');
+        toast.style.transform = 'translateY(20px)';
+        toast.style.opacity = '0';
+        toast.style.pointerEvents = 'none';
+    }
+
+    // ====== Show Notification ======
     window.addEventListener('load', function() {
         setTimeout(function() {
             const toast = document.getElementById('toastNotification');
@@ -1002,16 +1141,111 @@
             if (toast.style.opacity === '1') {
                 closeToast();
             }
-        }, 60000);
+        }, 30000);
     });
 
-    function closeToast() {
-        const toast = document.getElementById('toastNotification');
-        toast.style.transform = 'translateY(20px)';
-        toast.style.opacity = '0';
-        toast.style.pointerEvents = 'none';
-    }
+    // Notification ကိုနှိပ်ရင်လည်း ပိတ်မယ်
+    document.getElementById('toastNotification').addEventListener('click', function(e) {
+        if (e.target.tagName !== 'BUTTON' && e.target.tagName !== 'A') {
+            closeToast();
+        }
+    });
 </script>
+
+ <!-- ====== PDF Book Nest - Hero Banner (Blogger အရောင်) ====== -->
+<div style="
+    background: linear-gradient(135deg, rgba(26, 115, 232, 0.08), rgba(66, 133, 244, 0.04));
+    border: 1px solid rgba(26, 115, 232, 0.15);
+    border-radius: 20px;
+    padding: 28px 32px;
+    margin-bottom: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 8px 32px rgba(26, 115, 232, 0.06);
+    transition: 0.3s ease;
+">
+    <!-- ဘယ်ဘက် - Blog အကြောင်း -->
+    <div style="display: flex; align-items: center; gap: 20px; flex: 1;">
+        <!-- Logo Icon -->
+        <div style="
+            background: linear-gradient(135deg, rgba(26, 115, 232, 0.12), rgba(66, 133, 244, 0.06));
+            border-radius: 16px;
+            padding: 14px 18px;
+            font-size: 2.8rem;
+            line-height: 1;
+            border: 1px solid rgba(26, 115, 232, 0.08);
+        ">
+            📚
+        </div>
+        <div>
+            <!-- Title -->
+            <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                <span style="color: #ffffff; font-weight: 700; font-size: 1.4rem; letter-spacing: -0.5px;">
+                    PDF Book Nest
+                </span>
+                <!-- ★ Blogger အရောင် Badge ★ -->
+                <span style="
+                    background: #cc8603;
+                    padding: 2px 14px;
+                    border-radius: 30px;
+                    font-size: 0.6rem;
+                    color: #ffffff;
+                    font-weight: 600;
+                    letter-spacing: 0.5px;
+                    box-shadow: 0 2px 8px rgba(26, 115, 232, 0.25);
+                ">
+                    BLOG
+                </span>
+            </div>
+            <!-- Description -->
+            <div style="color: #b8c2d8; font-size: 0.95rem; margin-top: 4px; line-height: 1.6;">
+                📖 စာအုပ် PDF များ · ပညာရေးဆိုင်ရာ စာပေများ
+            </div>
+            <!-- Tags -->
+            <div style="display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 6px;">
+                <span style="color: #7a849e; font-size: 0.75rem;">📚 မြန်မာစာအုပ်</span>
+                <span style="color: #7a849e; font-size: 0.75rem;">📘 အင်္ဂလိပ်စာအုပ်</span>
+                <span style="color: #7a849e; font-size: 0.75rem;">🎓 ပညာရေးဆိုင်ရာ</span>
+                <span style="
+                    color: #1a73e8;
+                    font-size: 0.7rem;
+                    font-weight: 500;
+                    background: rgba(26, 115, 232, 0.06);
+                    padding: 0px 10px;
+                    border-radius: 30px;
+                    border: 1px solid rgba(26, 115, 232, 0.08);
+                ">
+                    ⭐ Blogger
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ညာဘက် - CTA Button (Blogger အရောင်) -->
+    <a href="https://pdfbooknest.blogspot.com" target="_blank" style="
+        background: #1a73e8;
+        color: #ffffff;
+        padding: 12px 32px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.9rem;
+        box-shadow: 0 6px 24px rgba(26, 115, 232, 0.3);
+        transition: all 0.3s ease;
+        white-space: nowrap;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    " onmouseover="this.style.background='#1557b0'; this.style.transform='scale(1.04)'; this.style.boxShadow='0 8px 32px rgba(26,115,232,0.4)';" onmouseout="this.style.background='#1a73e8'; this.style.transform='scale(1)'; this.style.boxShadow='0 6px 24px rgba(26,115,232,0.3)';">
+        📖 ဝင်ရောက်ကြည့်ရှုရန်
+        <span style="font-size: 1.2rem; transition: 0.3s ease;">→</span>
+    </a>
+</div>
 
         <div class="section-title">✨ <span>အဓိက ပါဝင်သော စနစ်များ</span> <span style="font-size:0.8rem;color:#5d6a7e;font-weight:400;background:none;-webkit-text-fill-color:#5d6a7e;">Key Features</span></div>
         <div class="features-grid">
